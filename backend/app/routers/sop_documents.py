@@ -1,12 +1,13 @@
 import hashlib
 import io
+import logging
 import os
 from pathlib import Path
 from typing import List, Optional
 from uuid import uuid4
 
 import pypdf
-from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, UploadFile, status
+from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, HTTPException, Query, UploadFile, status
 from fastapi.responses import FileResponse
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -18,7 +19,10 @@ from app.models.machine import Machine
 from app.models.production_line import ProductionLine
 from app.models.sop_document import IngestionStatus, SOPDocument
 from app.models.user import User, UserRole
+from app.rag.ingestion import delete_sop_vectors, ingest_sop_document
 from app.schemas.sop_document import SOPDocumentResponse, SOPDocumentUpdate
+
+logger = logging.getLogger("smartsop.routers.sop_documents")
 
 router = APIRouter(
     prefix="/sop_documents",
@@ -79,12 +83,14 @@ async def get_sop_document(
     summary="Tải lên tài liệu SOP định dạng PDF, kiểm tra trùng lặp SHA-256 (Quản đốc hoặc Admin)",
 )
 async def upload_sop_document(
+    background_tasks: BackgroundTasks,
     file: UploadFile = File(..., description="File PDF quy trình kỹ thuật"),
     document_code: str = Form(..., description="Mã hiệu tài liệu SOP (Ví dụ: SOP-SMT-004)"),
     title: str = Form(..., description="Tiêu đề tài liệu"),
     version: str = Form("1.0", description="Phiên bản tài liệu"),
     line_id: Optional[str] = Form(None, description="ID dây chuyền áp dụng"),
     machine_id: Optional[str] = Form(None, description="ID thiết bị áp dụng"),
+    auto_ingest: bool = Form(False, description="Tự động nạp vector vào ChromaDB sau khi tải lên"),
     current_user: User = Depends(
         require_roles([UserRole.FACTORY_MANAGER, UserRole.ADMIN])
     ),
@@ -180,7 +186,41 @@ async def upload_sop_document(
     db.add(doc)
     await db.commit()
     await db.refresh(doc)
+
+    if auto_ingest:
+        background_tasks.add_task(ingest_sop_document, doc.id)
+
     return doc
+
+
+@router.post(
+    "/{document_id}/ingest",
+    status_code=status.HTTP_202_ACCEPTED,
+    summary="Kích hoạt bóc tách PDF và nạp vector vào ChromaDB chạy nền (Quản đốc hoặc Admin)",
+)
+async def trigger_sop_ingestion(
+    document_id: str,
+    background_tasks: BackgroundTasks,
+    current_user: User = Depends(
+        require_roles([UserRole.FACTORY_MANAGER, UserRole.ADMIN])
+    ),
+    db: AsyncSession = Depends(get_db),
+):
+    stmt = select(SOPDocument).where(SOPDocument.id == document_id)
+    result = await db.execute(stmt)
+    doc = result.scalar_one_or_none()
+    if not doc:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Không tìm thấy tài liệu SOP với ID '{document_id}'",
+        )
+
+    background_tasks.add_task(ingest_sop_document, doc.id)
+    return {
+        "message": f"Đã đưa tài liệu '{doc.document_code}' vào hàng đợi nạp vector.",
+        "document_id": doc.id,
+        "status": "QUEUED",
+    }
 
 
 @router.get(
@@ -273,6 +313,12 @@ async def delete_sop_document(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Không tìm thấy tài liệu SOP với ID '{document_id}'",
         )
+
+    # Xóa đồng bộ toàn bộ vector liên quan trong ChromaDB (nếu có)
+    try:
+        await delete_sop_vectors(document_id)
+    except Exception as exc:
+        logger.warning(f"Không thể xóa vector ChromaDB cho document_id='{document_id}': {exc}")
 
     # Xóa file vật lý nếu nằm trong thư mục uploads (để tránh rác bộ nhớ)
     try:

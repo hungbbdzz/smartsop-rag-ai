@@ -51,6 +51,7 @@ SmartSOP AI is an async FastAPI + RAG platform designed for electronics manufact
 │   ├── app/
 │   │   ├── core/                 # Settings, async DB engine, JWT security, RBAC dependencies
 │   │   ├── models/               # 7 SQLAlchemy ORM models (users, lines, machines, SOPs, chunks, tickets, logs)
+│   │   ├── rag/                  # bge-m3 embeddings, ChromaDB persistent store & ingestion worker
 │   │   ├── routers/              # REST endpoints (auth, users, production_lines, machines, sop_documents, incident_tickets)
 │   │   ├── schemas/              # Pydantic v2 request/response models
 │   │   ├── utils/                # pdf_parser.py & chunker.py (table-aware PDF ingestion)
@@ -58,7 +59,7 @@ SmartSOP AI is an async FastAPI + RAG platform designed for electronics manufact
 │   ├── scripts/
 │   │   ├── seed_data.py          # Idempotent seed script (4 roles, 2 SMT lines, 5 machines, 3 SOPs)
 │   │   └── generate_additional_sops.py
-│   ├── tests/                    # Automated test suite (41/41 passing)
+│   ├── tests/                    # Automated test suite (49/49 passing)
 │   ├── .env.example
 │   └── requirements.txt
 ├── data/
@@ -78,9 +79,9 @@ SmartSOP AI is an async FastAPI + RAG platform designed for electronics manufact
 | **Phase 1** | **M1.1** | Project setup, 7-table async ORM schema, Alembic migrations, idempotent seed script | **Done** |
 | | **M1.2** | JWT authentication, Bcrypt password hashing, profile & token validation tests | **Done** |
 | | **M1.3** | RBAC dependencies, CRUD APIs (Lines, Machines, Users, Tickets, SOPs + SHA-256 upload) | **Done** |
-| **Phase 2** | **M2.1** | `pdfplumber` Markdown table extraction, heading detection, table-aware chunking (41/41 tests) | **Done** |
-| | **M2.2** | `BAAI/bge-m3` embeddings, ChromaDB vector store, background ingestion worker | **Next** |
-| **Phase 3** | **M3.x** | Dual-retrieval (error-code regex + cosine search), guardrails, citations, SSE chat API | *Planned* |
+| **Phase 2** | **M2.1** | `pdfplumber` Markdown table extraction, heading detection, table-aware chunking | **Done** |
+| | **M2.2** | `BAAI/bge-m3` embeddings, ChromaDB vector store, background ingestion worker | **Done** |
+| **Phase 3** | **M3.x** | Dual-retrieval (error-code regex + cosine search), guardrails, citations, SSE chat API | **Next** |
 | **Phase 4** | **M4.x** | React 18 + Vite frontend (SSE streaming UI, PDF citation viewer, KPI dashboard) | *Planned* |
 | **Phase 5** | **M5.x** | RAG quality benchmarks, evaluation suite, and multi-container Docker Compose setup | *Planned* |
 
