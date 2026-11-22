@@ -12,6 +12,7 @@ from app.models.machine import Machine
 from app.models.sop_document import SOPDocument
 from app.models.user import User, UserRole
 from app.schemas.incident_ticket import TicketCreate, TicketResponse, TicketUpdate
+from app.services.ticket_service import suggest_sop_for_incident
 
 router = APIRouter(
     prefix="/incident_tickets",
@@ -54,6 +55,27 @@ async def list_incident_tickets(
     stmt = stmt.order_by(IncidentTicket.created_at.desc())
     result = await db.execute(stmt)
     return result.scalars().all()
+
+
+@router.get(
+    "/suggest-sop",
+    summary="Gợi ý nhanh tài liệu SOP phù hợp cho mã lỗi và mô tả sự cố",
+)
+async def preview_sop_suggestion(
+    error_code: str = Query("", description="Mã lỗi kỹ thuật (VD: E-204)"),
+    description: str = Query("", description="Mô tả hiện tượng sự cố"),
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncSession = Depends(get_db),
+):
+    suggestion = await suggest_sop_for_incident(
+        error_code=error_code,
+        description=description,
+        db=db,
+    )
+    return {
+        "found": suggestion is not None,
+        "suggestion": suggestion,
+    }
 
 
 @router.get(
@@ -100,15 +122,29 @@ async def create_incident_ticket(
             detail=f"Không tìm thấy thiết bị với ID '{ticket_in.machine_id}'",
         )
 
-    # 2. Kiểm tra nếu có gán tài liệu SOP gợi ý
-    if ticket_in.suggested_sop_id:
-        sop_stmt = select(SOPDocument).where(SOPDocument.id == ticket_in.suggested_sop_id)
+    suggested_sop_id = ticket_in.suggested_sop_id
+    suggested_page = ticket_in.suggested_page
+    suggested_snippet = ticket_in.suggested_snippet
+
+    # 2. Kiểm tra nếu người dùng tự gán tài liệu SOP gợi ý; ngược lại tự động tìm bằng RAG
+    if suggested_sop_id:
+        sop_stmt = select(SOPDocument).where(SOPDocument.id == suggested_sop_id)
         sop_res = await db.execute(sop_stmt)
         if not sop_res.scalar_one_or_none():
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Không tìm thấy tài liệu SOP gợi ý với ID '{ticket_in.suggested_sop_id}'",
+                detail=f"Không tìm thấy tài liệu SOP gợi ý với ID '{suggested_sop_id}'",
             )
+    else:
+        suggestion = await suggest_sop_for_incident(
+            error_code=ticket_in.error_code,
+            description=ticket_in.description,
+            db=db,
+        )
+        if suggestion:
+            suggested_sop_id = suggestion["suggested_sop_id"]
+            suggested_page = suggestion["suggested_page"]
+            suggested_snippet = suggestion["suggested_snippet"]
 
     # 3. Tạo mã phiếu tự động nếu chưa có
     ticket_code = ticket_in.ticket_code
@@ -133,9 +169,9 @@ async def create_incident_ticket(
         description=ticket_in.description,
         priority=ticket_in.priority,
         status=TicketStatus.OPEN,
-        suggested_sop_id=ticket_in.suggested_sop_id,
-        suggested_page=ticket_in.suggested_page,
-        suggested_snippet=ticket_in.suggested_snippet,
+        suggested_sop_id=suggested_sop_id,
+        suggested_page=suggested_page,
+        suggested_snippet=suggested_snippet,
     )
     db.add(ticket)
     await db.commit()

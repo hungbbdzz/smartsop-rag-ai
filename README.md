@@ -51,15 +51,16 @@ SmartSOP AI is an async FastAPI + RAG platform designed for electronics manufact
 │   ├── app/
 │   │   ├── core/                 # Settings, async DB engine, JWT security, RBAC dependencies
 │   │   ├── models/               # 7 SQLAlchemy ORM models (users, lines, machines, SOPs, chunks, tickets, logs)
-│   │   ├── rag/                  # bge-m3 embeddings, ChromaDB persistent store & ingestion worker
-│   │   ├── routers/              # REST endpoints (auth, users, production_lines, machines, sop_documents, incident_tickets)
+│   │   ├── rag/                  # Embeddings, ChromaDB, dual-retrieval, prompt guardrails, LLM & SSE
+│   │   ├── routers/              # REST & SSE endpoints (auth, users, lines, machines, SOPs, tickets, chat)
 │   │   ├── schemas/              # Pydantic v2 request/response models
+│   │   ├── services/             # Business services (ticket SOP auto-suggestion)
 │   │   ├── utils/                # pdf_parser.py & chunker.py (table-aware PDF ingestion)
 │   │   └── main.py               # FastAPI application entrypoint
 │   ├── scripts/
 │   │   ├── seed_data.py          # Idempotent seed script (4 roles, 2 SMT lines, 5 machines, 3 SOPs)
 │   │   └── generate_additional_sops.py
-│   ├── tests/                    # Automated test suite (49/49 passing)
+│   ├── tests/                    # Automated test suite (69/69 passing)
 │   ├── .env.example
 │   └── requirements.txt
 ├── data/
@@ -81,8 +82,8 @@ SmartSOP AI is an async FastAPI + RAG platform designed for electronics manufact
 | | **M1.3** | RBAC dependencies, CRUD APIs (Lines, Machines, Users, Tickets, SOPs + SHA-256 upload) | **Done** |
 | **Phase 2** | **M2.1** | `pdfplumber` Markdown table extraction, heading detection, table-aware chunking | **Done** |
 | | **M2.2** | `BAAI/bge-m3` embeddings, ChromaDB vector store, background ingestion worker | **Done** |
-| **Phase 3** | **M3.x** | Dual-retrieval (error-code regex + cosine search), guardrails, citations, SSE chat API | **Next** |
-| **Phase 4** | **M4.x** | React 18 + Vite frontend (SSE streaming UI, PDF citation viewer, KPI dashboard) | *Planned* |
+| **Phase 3** | **M3.x** | Dual-retrieval (error-code regex + cosine search), guardrails, citations, SSE chat & ticket SOP suggestion | **Done** |
+| **Phase 4** | **M4.x** | React 18 + Vite frontend (SSE streaming UI, PDF citation viewer, KPI dashboard) | **Next** |
 | **Phase 5** | **M5.x** | RAG quality benchmarks, evaluation suite, and multi-container Docker Compose setup | *Planned* |
 
 ---
