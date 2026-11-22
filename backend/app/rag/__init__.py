@@ -1,8 +1,9 @@
 """
-RAG Ingestion & Vector Store package for SmartSOP AI:
+RAG Ingestion, Retrieval & Vector Store package for SmartSOP AI:
 - embeddings: Lazy Singleton BAAI/bge-m3 wrapper & ChromaEmbeddingFunction
 - vector_store: Singleton ChromaDB PersistentClient service (cosine space)
 - ingestion: Bounded-concurrency background worker syncing PDF chunks to ChromaDB & SQL DB
+- retriever: Dual-retrieval (error-code regex boost + cosine search) with similarity gating
 """
 
 from app.rag.embeddings import (
@@ -15,6 +16,11 @@ from app.rag.ingestion import (
     delete_sop_vectors,
     ingest_sop_document,
 )
+from app.rag.retriever import (
+    SOPRetriever,
+    extract_error_codes,
+    get_retriever,
+)
 from app.rag.vector_store import VectorStoreService, get_vector_store
 
 __all__ = [
@@ -26,4 +32,7 @@ __all__ = [
     "INGESTION_SEMAPHORE",
     "ingest_sop_document",
     "delete_sop_vectors",
+    "SOPRetriever",
+    "extract_error_codes",
+    "get_retriever",
 ]
