@@ -1,0 +1,720 @@
+﻿<!DOCTYPE html><html class="dark" lang="vi" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-primary-fixed":"#001d31","on-tertiary":"#68000a","surface-container":"#171f33","error-container":"#93000a","inverse-primary":"#006398","surface-container-low":"#131b2e","primary":"#93ccff","on-tertiary-container":"#5c0008","on-error-container":"#ffdad6","secondary":"#ffb95f","surface-container-highest":"#2d3449","on-tertiary-fixed":"#410004","secondary-fixed-dim":"#ffb95f","outline-variant":"#3f4850","secondary-fixed":"#ffddb8","on-background":"#dae2fd","on-secondary":"#472a00","on-secondary-container":"#5b3800","on-primary-container":"#002c47","on-tertiary-fixed-variant":"#930013","on-secondary-fixed":"#2a1700","tertiary-container":"#ff5451","surface-container-high":"#222a3d","tertiary":"#ffb3ad","outline":"#89929b","tertiary-fixed-dim":"#ffb3ad","surface-bright":"#31394d","error":"#ffb4ab","primary-fixed":"#cce5ff","on-primary-fixed-variant":"#004b73","background":"#0b1326","surface-container-lowest":"#060e20","on-surface":"#dae2fd","inverse-on-surface":"#283044","tertiary-fixed":"#ffdad7","on-secondary-fixed-variant":"#653e00","on-error":"#690005","primary-container":"#3198dc","on-surface-variant":"#bfc7d2","surface-dim":"#0b1326","surface-variant":"#2d3449","on-primary":"#003351","surface":"#0b1326","surface-tint":"#93ccff","secondary-container":"#ee9800","primary-fixed-dim":"#93ccff","inverse-surface":"#dae2fd"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter-lg":"1.5rem","space-md":"1rem","space-xl":"2.5rem","margin":"1rem","margin-lg":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","space-lg":"1.5rem","gutter":"1rem"},"fontFamily":{"headline-md":["Inter"],"label-lg":["JetBrains Mono"],"label-md":["JetBrains Mono"],"label-sm":["JetBrains Mono"],"body-lg":["Inter"],"headline-lg":["Inter"],"body-sm":["Inter"],"headline-lg-mobile":["Inter"],"body-md":["Inter"],"headline-xl-mobile":["Inter"],"headline-xl":["Inter"]},"fontSize":{"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"500"}],"label-sm":["10px",{"lineHeight":"14px","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"headline-xl":["36px",{"lineHeight":"44px","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen"><aside class="fixed left-0 top-0 h-screen w-60 bg-[#080e1b] border-r border-slate-800/80 z-50 flex flex-col justify-between select-none" data-purpose="primary-sidebar"><div><!-- Brand Logo Header --><div class="h-16 flex items-center px-4 gap-3 border-b border-slate-800/90 bg-[#060b16]"><div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-sky-600 to-cyan-400 p-[1px] flex items-center justify-center shadow-lg shadow-sky-500/20"><div class="h-full w-full bg-[#0b1326] rounded-[7px] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" aria-hidden="true" class="lucide lucide-cpu w-5 h-5 text-cyan-400"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg></div></div><div><div class="flex items-center gap-1.5"><span class="font-extrabold tracking-wider text-white text-base">SmartSOP</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono font-semibold">AI v4.2</span></div><p class="text-[11px] text-slate-400 font-medium">Trợ Lý Kỹ Thuật SMT</p></div></div><!-- Navigation Links --><nav aria-label="Main Navigation" class="p-3 space-y-1"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-dashboard" aria-hidden="true" class="lucide lucide-layout-dashboard w-4 h-4 text-slate-400"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg><span class="">Dashboard KPI &amp; Vận hành</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-4 h-4 text-slate-400"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><span class="">Trợ Lý AI Tra Cứu</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg bg-sky-950/60 border border-cyan-500/40 text-cyan-300 font-semibold text-xs transition-colors shadow-sm shadow-cyan-500/20" href="#"><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open w-4 h-4 text-cyan-400"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg><span class="">Kho Tài Liệu SOP &amp; PDF</span></div><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="alert-triangle" aria-hidden="true" class="lucide lucide-alert-triangle w-4 h-4 text-amber-400/80"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg><span class="">Phiếu Sự Cố Máy Móc</span></div><span class="px-1.5 py-0.5 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] rounded font-mono">3 Mới</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sliders" aria-hidden="true" class="lucide lucide-sliders w-4 h-4 text-slate-400"><path d="M10 8h4"></path><path d="M12 21v-9"></path><path d="M12 8V3"></path><path d="M17 16h4"></path><path d="M19 12V3"></path><path d="M19 21v-5"></path><path d="M3 14h4"></path><path d="M5 10V3"></path><path d="M5 21v-7"></path></svg><span class="">Quản Trị &amp; Cấu Hình Hệ Thống</span></a></nav></div><!-- Sidebar Bottom: Engineer Shift Profile --><div class="p-3 border-t border-slate-800/80 bg-[#060b16]" data-purpose="user-shift-profile"><div class="bg-[#131b2e] border border-slate-700/60 rounded-lg p-2.5 flex items-center justify-between"><div class="flex items-center gap-2.5"><div class="relative"><div class="w-8 h-8 rounded-md bg-slate-700 flex items-center justify-center font-bold text-xs text-sky-300 border border-slate-600">A</div><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-[#0b1326] rounded-full"></span></div><div class="overflow-hidden"><h4 class="text-xs font-semibold text-slate-100 truncate">Nguyễn Văn A</h4><p class="text-[10px] text-slate-400 font-mono truncate">Ca 1 (06:00 - 14:00)</p></div></div><button class="text-slate-400 hover:text-white p-1 hover:bg-slate-700/50 rounded transition-colors" title="Chuyển ca trực"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" aria-hidden="true" class="lucide lucide-log-out w-3.5 h-3.5 text-slate-400"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg></button></div><div class="mt-2 flex items-center justify-between text-[10px] text-slate-500 px-1 font-mono"><span class="">Xưởng: SMT-Floor-02</span><span class="text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>ESD Validated</span></div></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-md text-body-sm"><span class="text-outline hover:text-on-surface transition-colors cursor-pointer">Xưởng SMT 01</span><span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span><span class="font-semibold text-primary uppercase tracking-wide">Kho Quy Trình SOP</span></div><div class="h-4 w-px bg-outline-variant/40 mx-1"></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant font-label-sm text-xs cursor-pointer hover:border-outline transition-colors"><span class="material-symbols-outlined text-[14px] text-secondary">tune</span><span class="truncate max-w-[160px]">Tất cả dây chuyền (01-08)</span><span class="material-symbols-outlined text-[14px]">arrow_drop_down</span></div></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-low border border-outline-variant/30"><div class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></div><span class="font-label-sm text-[11px] text-on-surface-variant tracking-wider uppercase font-semibold">Gateway SCADA: Online</span></div><div class="relative"><button class="w-9 h-9 rounded bg-surface-container hover:bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[18px]">notifications</span></button><span class="absolute -top-1 -right-1 px-1.5 py-0.2 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-[9px] font-bold border border-surface-container-lowest">3</span></div><button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-primary text-on-primary font-body-md text-body-sm font-semibold hover:bg-primary-container hover:text-on-primary transition-all shadow-[0_0_12px_rgba(147,204,255,0.25)]"><span class="material-symbols-outlined text-[18px]">upload_file</span><span class="">Tải lên SOP</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 cursor-pointer"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface flex-1 w-full px-space-lg"><div class="flex flex-col w-full gap-space-md pb-space-xl">
+<!-- TOP STATS & COMMAND BAR -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md p-space-md rounded-xl bg-surface-container-low shadow-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-label-sm uppercase tracking-widest text-label-sm font-semibold">SMT HUB</span>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight uppercase">KHO QUY TRÌNH VẬN HÀNH TIÊU CHUẨN (SOP REPOSITORY)</h1>
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          Live Ingestion v2.4
+        </span>
+</div>
+<div class="flex items-center gap-space-md text-outline font-label-md text-label-md mt-1">
+<span class="flex items-center gap-1 text-on-surface-variant"><span class="font-semibold text-primary">24</span> Tài liệu tiêu chuẩn</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 text-on-surface-variant"><span class="font-semibold text-secondary">148</span> Phân đoạn Vector</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 text-primary-fixed"><span class="material-symbols-outlined text-[14px]">cloud_done</span> 100% Đồng bộ RAG</span>
+</div>
+</div>
+<!-- Right Action Area -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-primary hover:text-on-primary-fixed transition-all shadow-md" onclick="document.getElementById('upload-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span class="">+ Tải lên PDF SOP Mới</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2.5 rounded bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-bright transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">sync</span>
+<span class="">Đồng bộ Kho Vector</span>
+</button>
+</div>
+</div>
+<!-- FILTER & SEARCH CONSOLE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-sm p-space-sm rounded-xl bg-surface-container shadow-sm">
+<div class="lg:col-span-6 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-10 pr-20 py-2 rounded bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-sm focus:outline-none focus:bg-surface-container-low transition-all" id="sop-search-input" placeholder="Tìm theo mã tài liệu (SOP-SMT-001), tên quy trình, mã thiết bị (Fuji, Reflow, AOI)..." type="text">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container-highest text-outline font-label-sm text-label-sm uppercase">CMD+K</span>
+</div>
+<div class="lg:col-span-3 flex items-center gap-2">
+<div class="relative w-full">
+<select class="w-full appearance-none pl-3 pr-8 py-2 rounded bg-surface-container-lowest text-on-surface font-body-md text-body-sm focus:outline-none focus:bg-surface-container-low transition-all cursor-pointer" id="line-filter">
+<option value="all">Bộ lọc: Tất cả dây chuyền (01-08)</option>
+<option value="smt-1">Dây chuyền SMT-Line 1 (Fuji NXT III)</option>
+<option value="smt-2">Dây chuyền SMT-Line 2 (Yamaha YSM20)</option>
+<option value="qa-2">Dây chuyền QA-Line 2 (Koh Young AOI)</option>
+<option value="clean">Toàn xưởng (Phòng sạch Class 10k)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="lg:col-span-3 flex items-center gap-2">
+<div class="relative w-full">
+<select class="w-full appearance-none pl-3 pr-8 py-2 rounded bg-surface-container-lowest text-on-surface font-body-md text-body-sm focus:outline-none focus:bg-surface-container-low transition-all cursor-pointer" id="vector-filter">
+<option value="all">Trạng thái Vector [Tất cả]</option>
+<option value="ready">Sẵn sàng (Vector Ready)</option>
+<option value="processing">Đang bóc tách (In-Progress)</option>
+<option value="error">Cần nạp lại (Failed)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[18px]">tune</span>
+</div>
+</div>
+</div>
+<!-- WORKSPACE SPLIT (LEFT: TABLE HUB 52% | RIGHT: PREVIEW VIEWER 48%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- LEFT PANEL: SOP DIRECTORY & VECTOR STATUS (7 COLS) -->
+<div class="lg:col-span-7 flex flex-col gap-space-sm rounded-xl bg-surface-container-low p-space-md shadow-lg">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">folder_special</span>
+<span class="font-headline-md text-body-lg font-semibold text-on-surface uppercase tracking-tight">Danh Sách Quy Trình Kỹ Thuật</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">24 SOP</span>
+</div>
+<div class="flex items-center gap-1 text-outline font-label-sm text-label-sm">
+<span class="">Sort: Cập nhật gần nhất</span>
+<span class="material-symbols-outlined text-[16px] text-primary">arrow_downward</span>
+</div>
+</div>
+<!-- TABLE CONTAINER -->
+<div class="w-full overflow-x-auto rounded bg-surface-container-lowest shadow-sm">
+<table class="w-full text-left font-body-md text-body-sm min-w-[620px]">
+<thead class="bg-surface-container font-label-md text-label-sm text-outline uppercase tracking-wider select-none">
+<tr>
+<th class="py-3 px-3">Mã SOP</th>
+<th class="py-3 px-3">Tên Quy Trình</th>
+<th class="py-3 px-3">Dây Chuyền</th>
+<th class="py-3 px-3">Trạng Thái Vector RAG</th>
+<th class="py-3 px-3 text-right">Thao Tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent" id="sop-table-body">
+<!-- Row 1 (ACTIVE / CURRENT PREVIEW) -->
+<tr class="sop-row bg-surface-container-high/70 hover:bg-surface-container-high transition-colors cursor-pointer group" onclick="switchPreview('SOP-SMT-001', 'Quy trình xử lý lỗi Feeder &amp; Kẹt nhả linh kiện SMT', 'SMT-Line 1', '4 Chunks', '2.3', '3.4 MB', 4)">
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-sm font-semibold text-primary px-1.5 py-0.5 rounded bg-surface-container-lowest">SOP-SMT-001</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top max-w-[220px]">
+<div class="font-body-md text-body-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate leading-tight">Quy trình xử lý lỗi Feeder &amp; Kẹt linh kiện</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-2 mt-1">
+<span class="">Rev. 2.3</span>
+<span class="">•</span>
+<span class="">18 Trang</span>
+<span class="">•</span>
+<span class="text-secondary">Fuji NXT III</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">SMT-Line 1</span>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 font-label-md text-label-sm font-semibold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary shadow-sm"></span>
+<span class="">Ready (4 Chunks)</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline">Cosine Sim: 0.98 • FAISS</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded bg-primary text-on-primary hover:bg-primary-container transition-all" title="Xem PDF đầy đủ">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all" title="Tái bóc tách Embeddings">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all" title="Tải tệp PDF">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="sop-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" onclick="switchPreview('SOP-REFLOW-02', 'Quy trình hiệu chuẩn nhiệt độ lò hàn hồi lưu Reflow 10 vùng', 'SMT-Line 1', '6 Chunks', '1.8', '5.1 MB', 2)">
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary/40"></span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-lowest">SOP-REFLOW-02</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top max-w-[220px]">
+<div class="font-body-md text-body-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate leading-tight">Xử lý sai lệch nhiệt độ lò hàn Reflow</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-2 mt-1">
+<span class="">Rev. 1.8</span>
+<span class="">•</span>
+<span class="">26 Trang</span>
+<span class="">•</span>
+<span class="text-secondary">Heller 1913 Mk5</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">SMT-Line 1</span>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 font-label-md text-label-sm font-semibold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">Ready (6 Chunks)</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline">Cosine Sim: 0.95 • pgvector</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface-variant transition-all" title="Xem PDF">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all" title="Tái bóc tách">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all" title="Tải PDF">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="sop-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" onclick="switchPreview('SOP-AOI-003', 'Tiêu chuẩn kiểm tra quang học 3D AOI mạ thiếc và ngắn mạch', 'QA-Line 2', '8 Chunks', '3.1', '8.6 MB', 1)">
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary/40"></span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-lowest">SOP-AOI-003</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top max-w-[220px]">
+<div class="font-body-md text-body-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate leading-tight">Tiêu chuẩn kiểm tra quang học 3D AOI</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-2 mt-1">
+<span class="">Rev. 3.1</span>
+<span class="">•</span>
+<span class="">34 Trang</span>
+<span class="">•</span>
+<span class="text-secondary">Koh Young 3D</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">QA-Line 2</span>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 font-label-md text-label-sm font-semibold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">Ready (8 Chunks)</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline">Cosine Sim: 0.99 • Hybrid RAG</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface-variant transition-all" title="Xem PDF">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all" title="Tái bóc tách">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all" title="Tải PDF">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (PROCESSING INGESTION) -->
+<tr class="sop-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" onclick="switchPreview('SOP-CLEAN-004', 'Quy trình kiểm soát bụi và chuẩn an toàn phòng sạch Class 10k', 'Toàn xưởng', 'Processing (72%)', '1.0', '2.2 MB', 1)">
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-md text-label-sm font-semibold text-secondary px-1.5 py-0.5 rounded bg-surface-container-lowest">SOP-CLEAN-004</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top max-w-[220px]">
+<div class="font-body-md text-body-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate leading-tight">Quy trình an toàn vệ sinh phòng sạch</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-2 mt-1">
+<span class="">Rev. 1.0</span>
+<span class="">•</span>
+<span class="">12 Trang</span>
+<span class="">•</span>
+<span class="text-secondary">Class 10,000 ISO</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">Toàn xưởng</span>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-label-md text-label-sm font-semibold text-secondary">
+<span class="material-symbols-outlined text-[14px] animate-spin">progress_activity</span>
+<span class="">Đang phân đoạn (72%)</span>
+</div>
+<div class="w-32 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded bg-surface-container hover:bg-secondary hover:text-on-secondary-fixed text-on-surface-variant transition-all" title="Xem tiến trình">
+<span class="material-symbols-outlined text-[16px]">hourglass_top</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-tertiary-container hover:text-on-tertiary text-on-surface-variant transition-all" title="Hủy bóc tách">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="sop-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" onclick="switchPreview('SOP-YAMAHA-05', 'Hiệu chuẩn đầu hút Nozzle gắp chip siêu nhỏ 0201 &amp; BGA', 'SMT-Line 2', '5 Chunks', '2.0', '4.7 MB', 3)">
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary/40"></span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-lowest">SOP-YAMAHA-05</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top max-w-[220px]">
+<div class="font-body-md text-body-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate leading-tight">Hiệu chuẩn đầu Nozzle hút chip 0201</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-2 mt-1">
+<span class="">Rev. 2.0</span>
+<span class="">•</span>
+<span class="">15 Trang</span>
+<span class="">•</span>
+<span class="text-secondary">Yamaha YSM</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">SMT-Line 2</span>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 font-label-md text-label-sm font-semibold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">Ready (5 Chunks)</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline">Cosine Sim: 0.97 • FAISS</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface-variant transition-all" title="Xem PDF">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all" title="Tái bóc tách">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all" title="Tải PDF">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="sop-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" onclick="switchPreview('SOP-ESD-06', 'Tiêu chuẩn bảo hộ tĩnh điện ESD &amp; Kiểm tra vòng đeo tay', 'Toàn xưởng', '3 Chunks', '1.4', '1.9 MB', 1)">
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary/40"></span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface-variant px-1.5 py-0.5 rounded bg-surface-container-lowest">SOP-ESD-06</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top max-w-[220px]">
+<div class="font-body-md text-body-sm font-semibold text-on-surface group-hover:text-primary transition-colors truncate leading-tight">Tiêu chuẩn kiểm soát chống tĩnh điện ESD</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-2 mt-1">
+<span class="">Rev. 1.4</span>
+<span class="">•</span>
+<span class="">9 Trang</span>
+<span class="">•</span>
+<span class="text-secondary">IEC 61340-5-1</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-medium">Toàn xưởng</span>
+</td>
+<td class="py-3 px-3 align-top whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 font-label-md text-label-sm font-semibold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">Ready (3 Chunks)</span>
+</div>
+<span class="font-label-sm text-[10px] text-outline">Cosine Sim: 0.94 • Qdrant</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface-variant transition-all" title="Xem PDF">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-all" title="Tái bóc tách">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-all" title="Tải PDF">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PAGINATION & METRICS FOOTER -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-xs font-label-md text-label-sm text-outline">
+<div class="flex items-center gap-2">
+<span class="">Hiển thị <span class="font-semibold text-on-surface">1 - 6</span> trên 24 quy trình</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="">Bộ nhớ Vector: <span class="font-semibold text-primary">48.2 MB</span></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-outline hover:text-on-surface transition-colors disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<span class="px-3 py-1 rounded bg-primary text-on-primary font-bold">1</span>
+<button class="px-3 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors">2</button>
+<button class="px-3 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors">3</button>
+<button class="px-3 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors">4</button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- INGESTION PIPELINE MINI TELEMETRY -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="p-2.5 rounded bg-surface-container flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">neurology</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-outline uppercase">Embedding Model</span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface truncate">BAAI/bge-m3</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-secondary/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">cut</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-outline uppercase">Chunking Strategy</span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface truncate">512 tokens (Overlap 100)</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">database</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-outline uppercase">Vector Store</span>
+<span class="font-label-md text-label-sm font-semibold text-on-surface truncate">ChromaDB Cục Bộ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: SMART INDUSTRIAL PDF VIEWER (5 COLS) -->
+<div class="lg:col-span-5 flex flex-col gap-space-xs rounded-xl bg-surface-container-low p-space-md shadow-lg sticky top-20">
+<!-- VIEWER TOP TOOLBAR -->
+<div class="flex flex-col gap-2 pb-space-xs border-b border-transparent">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-tertiary-container text-[22px]">picture_as_pdf</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate" id="viewer-filename">SOP-SMT-001_v2.3_Final.pdf</span>
+<span class="font-label-sm text-label-sm text-outline" id="viewer-filemeta">Dung lượng: 3.4 MB • Phê duyệt: 15/02/2025 bởi QA-Head</span>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button class="p-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" id="zoom-out" title="Thu nhỏ">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-label-sm text-label-sm px-1.5 text-on-surface font-semibold" id="zoom-level">100%</span>
+<button class="p-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" id="zoom-in" title="Phóng to">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+<button class="p-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Toàn màn hình">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- VIEWER SECONDARY TOOLBAR: PAGE STEPPER & AI KEYWORD SCAN -->
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex items-center gap-1.5">
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors flex items-center" id="prev-page">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+<span class="font-label-md text-label-sm text-on-surface-variant">Trang <span class="px-2 py-0.5 rounded bg-surface-container-lowest font-bold text-primary" id="current-page-num">4</span> / 18</span>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors flex items-center" id="next-page">
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<div class="relative flex-1 max-w-[240px]">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[14px]">find_in_page</span>
+<input class="w-full pl-7 pr-7 py-1 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none" type="text" value="lỗi Feeder">
+<span class="absolute right-2 top-1/2 -translate-y-1/2 px-1 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-[9px] font-bold">2 hit</span>
+</div>
+</div>
+</div>
+<!-- PDF DOCUMENT RENDER CANVAS (STYLIZED INDUSTRIAL DOCUMENT) -->
+<div class="w-full bg-[#1b2234] rounded-lg p-space-sm overflow-y-auto max-h-[640px] shadow-inner select-text" id="pdf-canvas-container">
+<!-- SHEET 1 (A4 INDUSTRIAL LOOK WITH HIGH-CONTRAST DATA) -->
+<div class="bg-surface-container-lowest rounded shadow-xl p-space-lg flex flex-col gap-space-md text-on-surface">
+<!-- DOC HEADER -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[28px]">precision_manufacturing</span>
+<div class="flex flex-col">
+<span class="font-label-md text-[11px] uppercase tracking-wider text-outline font-bold">SMART FACTORY OS • SMT DIVISION</span>
+<span class="font-headline-md text-body-md font-bold text-on-surface">TIÊU CHUẨN VẬN HÀNH THIẾT BỊ GẮP FUJI NXT</span>
+</div>
+</div>
+<div class="text-right font-label-sm text-[10px] text-outline">
+<div class="">MÃ HIỆU: <span class="text-primary font-bold">SOP-SMT-001</span></div>
+<div class="">PHÂN LOẠI: NỘI BỘ LEVEL 2</div>
+</div>
+</div>
+<!-- RAG EMBEDDED CHUNK HIGHLIGHT CALLOUT -->
+<div class="p-space-sm rounded bg-surface-container-high/90 shadow-md flex flex-col gap-1.5 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-primary text-on-primary font-label-sm text-[9px] font-bold uppercase tracking-wider">CHUNK #3 VECTOR EMBEDDED</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary-fixed font-label-sm text-[9px]">Độ tương đồng: 96%</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[16px] animate-pulse">auto_awesome</span>
+</div>
+<p class="font-label-sm text-[11px] text-on-surface-variant italic">
+              Đoạn văn bản kỹ thuật này đã được chỉ mục hóa vào mô hình Trợ lý Kỹ thuật AI để tự động kích hoạt khi có sự cố Feeder mã E-204.
+            </p>
+</div>
+<!-- DOCUMENT BODY CONTENT -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-md text-label-sm font-bold">Mục 4.2</span>
+<h2 class="font-headline-md text-body-lg font-bold text-on-surface">Xử lý sự cố kẹt cuộn cấp liệu Feeder (Mã lỗi E-204 / Pickup Reject)</h2>
+</div>
+<p class="font-body-md text-body-sm text-on-surface-variant leading-relaxed">
+              Khi hệ thống phát cảnh báo E-204 trên cụm đầu hút Nozzle 04 hoặc 06, kỹ thuật viên vận hành dây chuyền cần thực hiện chính xác theo trình tự 4 bước tiêu chuẩn dưới đây để tránh hư hại băng tải chip và ray dẫn hướng:
+            </p>
+<!-- STEPS WITH RAG STEPPING -->
+<div class="flex flex-col gap-2 font-body-md text-body-sm">
+<div class="p-2.5 rounded bg-surface-container flex items-start gap-3">
+<span class="w-6 h-6 rounded bg-primary text-on-primary font-label-md text-label-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Nhấn nút dừng khẩn cấp STOP cụm gắp (Module Stop)</span>
+<span class="text-outline text-body-sm">Không tắt nguồn chính (Main Breaker). Chờ cụm X-Y Beam lùi hoàn toàn về vị trí Home (Park Mode).</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex items-start gap-3">
+<span class="w-6 h-6 rounded bg-primary text-on-primary font-label-md text-label-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Gạt cần nhả chốt Feeder W08b theo góc 45 độ</span>
+<span class="text-outline text-body-sm">Dùng ngón tay cái ấn nhẹ ngàm khóa số 2. Rút toàn bộ cuộn linh kiện 8mm ra khỏi bàn máy gá đặt (Feeder Bank).</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex items-start gap-3">
+<span class="w-6 h-6 rounded bg-primary text-on-primary font-label-md text-label-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Kiểm tra cảm biến quang học và cuộn màng Cover Tape</span>
+<span class="text-outline text-body-sm">Soi đèn LED kiểm tra lens thu phát. Nếu phát hiện màng dính cover tape bị xé rách hoặc kẹt bánh răng sao (Sprocket), tuyệt đối không kéo cưỡng bức.</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex items-start gap-3">
+<span class="w-6 h-6 rounded bg-primary text-on-primary font-label-md text-label-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Cắt bỏ 3 mắt băng dính thừa và hiệu chuẩn lại cữ gắp</span>
+<span class="text-outline text-body-sm">Dùng kéo chống tĩnh điện cắt vuông góc. Nạp lại màng vào rãnh thu hồi màng thải và ấn nút Feed test 01 nhịp trên thân Feeder.</span>
+</div>
+</div>
+</div>
+<!-- EMBEDDED TECHNICAL SCHEMATIC GRAPHIC -->
+<div class="p-space-sm rounded bg-surface-container-high flex flex-col gap-2 mt-1">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="flex items-center gap-1 font-semibold text-on-surface"><span class="material-symbols-outlined text-[16px] text-secondary">image</span> SƠ ĐỒ KỸ THUẬT: CƠ CẤU KHÓA FEEDER W08b</span>
+<span class="">FIG 4.2-A</span>
+</div>
+<!-- SVG Industrial Diagram -->
+<div class="w-full bg-surface-container-lowest rounded p-space-sm flex items-center justify-center">
+<svg class="w-full max-h-36 text-primary" viewBox="0 0 460 140">
+<rect fill="currentColor" fill-opacity="0.1" height="90" rx="4" stroke="currentColor" stroke-width="1.5" width="120" x="10" y="20"></rect>
+<text fill="currentColor" font-family="JetBrains Mono" font-size="11" font-weight="600" text-anchor="middle" x="70" y="70">FEEDER BODY</text>
+<path d="M130 65 L210 65" stroke="currentColor" stroke-dasharray="4 2" stroke-width="2"></path>
+<circle cx="210" cy="65" fill="currentColor" r="4"></circle>
+<rect fill="#ffb95f" fill-opacity="0.15" height="60" rx="4" stroke="#ffb95f" stroke-width="1.5" width="130" x="220" y="35"></rect>
+<text fill="#ffb95f" font-family="JetBrains Mono" font-size="10" font-weight="bold" text-anchor="middle" x="285" y="62">LEVER (45° RELEASE)</text>
+<text fill="#ffb95f" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="285" y="78">Chốt khóa ngàm W08</text>
+<path d="M350 65 L410 65" stroke="#ff5451" stroke-width="2"></path>
+<polygon fill="#ff5451" points="410,60 425,65 410,70"></polygon>
+<text fill="#ff5451" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="410" y="95">KÉO RA (PULL)</text>
+<line stroke="currentColor" stroke-width="1" x1="70" x2="70" y1="110" y2="125"></line>
+<text fill="#89929b" font-family="JetBrains Mono" font-size="8" text-anchor="middle" x="70" y="135">Mặt tiếp xúc cảm biến</text>
+</svg>
+</div>
+<!-- SAFETY ADVISORY BADGE -->
+<div class="flex items-center gap-2 p-2 rounded bg-tertiary-container/15 text-tertiary font-label-md text-label-sm">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span class=""><strong>CẢNH BÁO AN TOÀN:</strong> Bắt buộc đeo vòng khử tĩnh điện ESD khi chạm vào khu vực nạp linh kiện SMT.</span>
+</div>
+</div>
+<!-- SIGN-OFF FOOTER -->
+<div class="flex items-center justify-between pt-space-sm text-outline font-label-sm text-[10px]">
+<div class="">Biên soạn: K/s Trần Hoàng Sơn (PE Dept)</div>
+<div class="">Xác thực số: SHA256-8F4A992C</div>
+<div class="">Trang 4 / 18</div>
+</div>
+</div>
+</div>
+</div>
+<!-- VIEWER ACTION CONTROLS FOOTER -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs">
+<button class="w-full sm:w-auto flex items-center justify-center gap-1.5 px-3 py-2 rounded bg-primary-container text-on-primary font-label-md text-label-sm font-semibold hover:bg-primary hover:text-on-primary-fixed transition-all shadow-sm" onclick="extractCurrentChunk()">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+<span class="">Trích Xuất Chunk Này Cho AI</span>
+</button>
+<div class="flex items-center gap-2 w-full sm:w-auto justify-end"><button class="flex items-center gap-1 px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-sm transition-colors" title="In tài liệu SOP"><span class="material-symbols-outlined text-[16px]">print</span><span class="">In SOP</span></button><button class="flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-sm transition-all shadow-sm" title="Tải tệp PDF gốc về máy"><span class="material-symbols-outlined text-[16px]">download</span><span class="">Tải PDF Gốc</span></button><button class="flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container hover:bg-surface-bright text-on-surface font-label-md text-label-sm transition-colors shadow-sm" onclick="const el=document.getElementById('pdf-canvas-container'); if(el.requestFullscreen){el.requestFullscreen()}else{alert('Chế độ toàn màn hình')}" title="Phóng to toàn màn hình"><span class="material-symbols-outlined text-[16px]">fullscreen</span><span class="">Phóng to toàn màn hình</span></button></div>
+</div>
+</div>
+</div>
+<!-- UPLOAD MODAL DIALOG (HIDDEN BY DEFAULT) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-sm hidden p-4" id="upload-modal">
+<div class="w-full max-w-2xl rounded-xl bg-surface-container p-space-lg shadow-2xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">upload_file</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Tải Lên Tài Liệu SOP Mới</h2>
+</div>
+<button class="p-1 rounded bg-surface-container-high text-outline hover:text-on-surface transition-colors" onclick="document.getElementById('upload-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="border-2 border-dashed border-outline-variant hover:border-primary rounded-xl p-space-xl flex flex-col items-center justify-center gap-2 text-center bg-surface-container-low transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[44px]">cloud_upload</span>
+<span class="font-headline-md text-body-lg font-semibold text-on-surface">Kéo thả tệp PDF SOP vào đây hoặc bấm để chọn tệp</span>
+<span class="font-label-sm text-label-sm text-outline">Định dạng hỗ trợ: .PDF, .DOCX (Tối đa 50MB, tự động nhận diện chữ OCR &amp; bảng biểu)</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm mt-1">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-sm text-outline uppercase font-semibold">Mã Quy Trình (SOP Code)</label>
+<input class="px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-sm focus:outline-none" placeholder="Ví dụ: SOP-SMT-009" type="text">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-sm text-outline uppercase font-semibold">Dây chuyền áp dụng</label>
+<select class="px-3 py-2 rounded bg-surface-container-lowest text-on-surface font-body-md text-body-sm focus:outline-none">
+<option>SMT-Line 1 (Fuji NXT III)</option>
+<option>SMT-Line 2 (Yamaha YSM)</option>
+<option>QA-Line 2 (Koh Young AOI)</option>
+<option>Toàn xưởng</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-sm rounded bg-surface-container-low">
+<input checked="" class="w-4 h-4 rounded bg-surface-container-lowest text-primary" id="auto-vector-check" type="checkbox">
+<label class="font-body-md text-body-sm text-on-surface-variant cursor-pointer" for="auto-vector-check">
+            Tự động kích hoạt Vector Embedding (bóc tách 512-token chunking cho Trợ lý Kỹ thuật RAG ngay sau khi tải xong)
+          </label>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-4 py-2 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-sm" onclick="document.getElementById('upload-modal').classList.add('hidden')">Hủy bỏ</button>
+<button class="flex items-center gap-2 px-5 py-2 rounded bg-primary-container text-on-primary font-label-md text-label-sm font-semibold hover:bg-primary hover:text-on-primary-fixed shadow-md" onclick="simulateUpload()">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="">Bắt Đầu Tải Lên &amp; Bóc Tách Vector</span>
+</button>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION -->
+<div class="fixed bottom-6 right-6 z-50 hidden flex items-center gap-2 px-4 py-3 rounded-lg bg-surface-container-highest text-on-surface shadow-2xl transition-all" id="ai-toast">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-sm font-semibold" id="toast-message">Đã trích xuất Chunk #3 vào bộ nhớ đệm AI Copilot!</span>
+</div>
+</div>
+<script>
+  let currentZoom = 100;
+  let currentPage = 4;
+  const totalPages = 18;
+
+  function switchPreview(code, title, line, status, rev, size, page) {
+    document.getElementById('viewer-filename').textContent = `${code}_v${rev}_Final.pdf`;
+    document.getElementById('viewer-filemeta').textContent = `Dung lượng: ${size} • Dây chuyền: ${line} • Trạng thái: ${status}`;
+    document.getElementById('current-page-num').textContent = page;
+    currentPage = page;
+
+    // Highlight row
+    document.querySelectorAll('.sop-row').forEach(row => {
+      row.classList.remove('bg-surface-container-high/70');
+    });
+    event.currentTarget.classList.add('bg-surface-container-high/70');
+    
+    showToast(`Đã tải xem trước tài liệu ${code}`);
+  }
+
+  document.getElementById('zoom-in').addEventListener('click', () => {
+    if (currentZoom < 160) {
+      currentZoom += 15;
+      updateZoom();
+    }
+  });
+
+  document.getElementById('zoom-out').addEventListener('click', () => {
+    if (currentZoom > 70) {
+      currentZoom -= 15;
+      updateZoom();
+    }
+  });
+
+  function updateZoom() {
+    document.getElementById('zoom-level').textContent = `${currentZoom}%`;
+    const docContainer = document.querySelector('#pdf-canvas-container > div');
+    if (docContainer) {
+      docContainer.style.transform = `scale(${currentZoom / 100})`;
+      docContainer.style.transformOrigin = 'top center';
+    }
+  }
+
+  document.getElementById('next-page').addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      document.getElementById('current-page-num').textContent = currentPage;
+      showToast(`Chuyển đến trang ${currentPage}`);
+    }
+  });
+
+  document.getElementById('prev-page').addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      document.getElementById('current-page-num').textContent = currentPage;
+      showToast(`Quay lại trang ${currentPage}`);
+    }
+  });
+
+  function extractCurrentChunk() {
+    showToast('Đã trích xuất Chunk #3 vào RAG Prompt của K/s Trưởng Ca');
+  }
+
+  function simulateUpload() {
+    document.getElementById('upload-modal').classList.add('hidden');
+    showToast('Đang tải tệp & đẩy vào hàng đợi Vector Processing...');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('ai-toast');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.textContent = msg;
+    toast.classList.remove('hidden');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 3200);
+  }
+
+  // Quick search filter simulation
+  document.getElementById('sop-search-input').addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll('.sop-row').forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (text.includes(term)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script></main></div>
+
+<script src="../demo-bridge.js"></script>
+</body></html>

@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html><html class="h-full bg-[#090e17] text-slate-100 antialiased" lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SmartSOP AI - Hệ thống Quản lý SOP &amp; Trợ lý Vận hành Thông minh</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            factory: {
+              darkest: '#060a12',
+              dark: '#090e17',
+              card: '#0f172a',
+              border: '#1e293b',
+              accent: '#38bdf8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+          },
+          boxShadow: {
+            'glow-blue': '0 0 25px -5px rgba(2, 132, 199, 0.45)',
+            'glow-cyan': '0 0 15px -3px rgba(56, 189, 248, 0.35)',
+            'glow-amber': '0 0 15px -3px rgba(245, 158, 11, 0.35)',
+          }
+        }
+      }
+    };
+  </script>
+<!-- Custom Styles for High-Tech Industrial Aesthetic -->
+<style data-purpose="industrial-theme">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    /* Custom subtle tech grid pattern */
+    .bg-grid-tech {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+    }
+
+    /* Glassmorphism high-contrast utility */
+    .industrial-glass {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.16);
+    }
+
+    /* Active demo card indicator */
+    .demo-card-selected {
+      border-color: #38bdf8 !important;
+      background-color: rgba(2, 132, 199, 0.15) !important;
+      box-shadow: 0 0 18px rgba(2, 132, 199, 0.28);
+    }
+  </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" data-snapdom="injected-import"></head>
+<body class="h-full w-full bg-[#090e17] overflow-x-hidden select-none font-sans">
+<!-- BEGIN: MainContainer -->
+<main class="min-h-screen w-full flex flex-col lg:flex-row" data-purpose="root-layout">
+<!-- BEGIN: LeftIndustrialHero (60% Desktop) -->
+<section class="relative w-full lg:w-[60%] min-h-[560px] lg:min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-14 overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800/80" data-purpose="left-showcase">
+<!-- Background Image with Industrial Dark Blue Vignette Gradient -->
+<div class="absolute inset-0 z-0">
+<img alt="High-tech SMT electronics manufacturing assembly line" class="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.08]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrxm0zNoLMz7WwYxgq9CPWlW3EDSnAq9oFDL9gTgA8A4N1GqyjIO898I_30qZTo9pNccayT8T_8FEjadby3V9QW-sdIdFXT6KvhAcR9A_dtLVTMt1ZxALyFI6mkHDXXweO1ZaUH-RxxDzZFX7EhEsACV9qgG5nq-OvAyQId7ZWljbvfuMgftSIL5T1ciYN_lOTbd_EiFvFbLaPRmcr5TpAh861Rw89LzNAJWwA9o6mE9MhLCcD62Y">
+<!-- Multi-layer gradient overlays for high-contrast legible typography -->
+<div class="absolute inset-0 bg-gradient-to-r from-[#090e17]/95 via-[#090e17]/85 to-[#0f172a]/70"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#090e17] via-transparent to-[#090e17]/70"></div>
+<div class="absolute inset-0 bg-grid-tech opacity-60"></div>
+</div>
+<!-- Top Branding Bar -->
+<header class="relative z-10 flex flex-wrap items-center justify-between gap-4" data-purpose="brand-header">
+<div class="flex items-center gap-3.5">
+<!-- Logo Emblem -->
+<div class="w-11 h-11 rounded-lg p-0.5 bg-slate-900/90 border border-sky-500/40 shadow-glow-cyan flex items-center justify-center overflow-hidden">
+<img alt="SmartSOP AI Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UKlWGsL9dWhh1kMDyO6nKa6XkOpbc5YSZk6KjEEAek5e04IlBbcaSANgpyb0o6ziZzUI9JjWzft3KV81UY55Abt9cn6xmyDNgebQoZwpB3Jc_D-e56nifCOS0zkLVVkp4GF2XpcXyILpDGi0IWMjjkO0WtAVlwbjm5OussLfYce4d_U315P6CWFUdQe_LhE5pWO1svCgrQLMJjuj_lU0ZXhRi4dtc5CKKgceOIxVIOYrVSNFBEKFjmMQ">
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+                SmartSOP <span class="text-sky-400 font-extrabold">AI</span>
+</span>
+<span class="text-[10px] uppercase font-mono tracking-widest px-1.5 py-0.5 rounded bg-sky-950/80 border border-sky-500/30 text-sky-300 font-semibold">
+                v2.4
+              </span>
+</div>
+<p class="text-xs text-slate-400 font-medium">Hệ thống Quản lý SOP &amp; Hỗ trợ Vận hành</p>
+</div>
+</div>
+<!-- Live SCADA Pulse Badge -->
+<div class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full industrial-glass border border-emerald-500/30"><span class="relative flex h-2 w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span><span class="text-[11px] font-mono font-semibold tracking-wider text-emerald-300 uppercase">Hệ thống Quản lý Quy trình Vận hành Tiêu chuẩn &amp; Trợ lý Kỹ thuật RAG AI</span></div>
+</header>
+<!-- Center Hero Content -->
+<div class="relative z-10 my-auto py-10 max-w-2xl" data-purpose="hero-typography">
+<!-- Eyebrow Pill -->
+<div class="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-md bg-sky-950/70 border border-sky-400/30 text-sky-300 text-xs font-mono font-semibold uppercase tracking-wider shadow-inner">
+<svg class="w-3.5 h-3.5 text-sky-400 animate-spin" fill="none" stroke="currentColor" stroke-width="2" style="animation-duration: 6s;" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">SMART FACTORY 4.0 • RAG AI ENGINE</span>
+</div>
+<!-- Headline -->
+<h1 class="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-white tracking-tight leading-[1.2] mb-5">
+          Hệ thống Quản lý SOP &amp; Trợ lý Vận hành Thông minh — <span class="bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">SmartSOP AI</span>
+</h1>
+<!-- Subtitle -->
+<p class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal mb-8 max-w-xl">
+          Tối ưu hóa thời gian xử lý sự cố thiết bị máy móc (<span class="text-sky-300 font-semibold font-mono">MTTR</span>), tra cứu quy trình chuẩn xác thực thời gian thực và phân quyền vận hành ca thông minh chuẩn xác trên từng dây chuyền sản xuất.
+        </p>
+<!-- Dynamic Factory Indicators Mini-feed -->
+<div class="flex flex-wrap items-center gap-3 text-xs text-slate-400 font-mono">
+<div class="flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded border border-slate-700/50">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+<span class="">SMT Solder-Paste: OK</span>
+</div>
+<div class="flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded border border-slate-700/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="">Pick &amp; Place (KUKA): Đồng bộ</span>
+</div>
+<div class="flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded border border-slate-700/50">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+<span class="">Reflow Oven: 242°C</span>
+</div>
+</div>
+</div>
+<!-- Bottom Metrics Glassmorphism Bar -->
+<footer class="relative z-10 pt-4" data-purpose="hero-metrics">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-6">
+<!-- Metric 1 -->
+<div class="industrial-glass rounded-xl p-4 transition-all duration-300 hover:border-sky-500/50 hover:shadow-glow-cyan/20">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Hiệu quả xử lý</span>
+<svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight text-emerald-400">99.4%</div>
+<div class="text-xs text-slate-300 mt-1 font-medium">Tỉ lệ giải quyết qua SOP</div>
+</div>
+<!-- Metric 2 -->
+<div class="industrial-glass rounded-xl p-4 transition-all duration-300 hover:border-sky-500/50 hover:shadow-glow-cyan/20"><div class="flex items-center justify-between mb-1"><span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Tốc độ RAG AI</span><svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="text-2xl sm:text-3xl font-extrabold text-sky-400 font-mono tracking-tight">&lt; 1.5s</div><div class="text-xs text-slate-300 mt-1 font-medium">Phản hồi tức thì (Thời gian truy vấn RAG AI)</div></div>
+<!-- Metric 3 -->
+<div class="industrial-glass rounded-xl p-4 transition-all duration-300 hover:border-sky-500/50 hover:shadow-glow-cyan/20">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Hạ tầng Line</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-400/10 text-amber-400 border border-amber-500/30">ONLINE</span>
+</div>
+<div class="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight">Line 01-08</div>
+<div class="text-xs text-slate-300 mt-1 font-medium">Trạng thái SCADA Hoạt động</div>
+</div>
+</div>
+<!-- Compliance & Server Taglines -->
+<div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 font-mono border-t border-slate-800/80 pt-3">
+<div class="flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12.99H5V8.3l7-3.89v8.58z"></path>
+</svg>
+<span class="">ISO 9001 / IATF 16949 Compliant</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+<span class="">Edge Server: <strong class="text-slate-300">v2.4-prod (Hai Phong Hub)</strong></span>
+</div>
+</div>
+</footer>
+</section>
+<!-- END: LeftIndustrialHero -->
+<!-- BEGIN: RightAuthColumn (40% Desktop) -->
+<section class="w-full lg:w-[40%] bg-[#0b1329] flex flex-col justify-center px-6 sm:px-10 lg:px-12 py-10 relative overflow-y-auto" data-purpose="right-auth-form">
+<!-- Subtle Ambient Backlight Glow -->
+<div class="absolute -top-32 -right-32 w-80 h-80 bg-sky-600/15 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -left-32 w-80 h-80 bg-blue-700/10 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Auth Card Container -->
+<div class="relative z-10 w-full max-w-md mx-auto space-y-7" data-purpose="auth-panel">
+<!-- Header -->
+<div class="space-y-2 border-b border-slate-800/80 pb-5" data-purpose="auth-header">
+<div class="flex items-center justify-between mb-1">
+<span class="text-xs font-mono tracking-wider uppercase text-sky-400 font-semibold flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded bg-sky-400"></span>
+              Cổng Xác Thực Vận Hành
+            </span>
+<!-- Active Server Badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Gateway SCADA: Online
+            </span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Đăng Nhập Hệ Thống</h2>
+<p class="text-sm text-slate-400">
+            Nhập thông tin nhân viên hoặc quét thẻ RFID ca làm việc để nhận phiên làm việc định danh.
+          </p>
+</div>
+<!-- Form Elements -->
+<form class="space-y-4" data-purpose="login-form" id="loginForm" onsubmit="event.preventDefault(); triggerAuth();">
+<!-- Input 1: Staff ID / Badge ID -->
+<div>
+<label class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 flex items-center justify-between" for="staffId">
+<span class="">Mã Nhân Viên / RFID Badge ID</span>
+
+</label>
+<div class="relative rounded-lg shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<!-- Badge/ID Icon -->
+<svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<input class="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-slate-700/80 rounded-lg text-white font-mono text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all duration-200" id="staffId" name="staffId" placeholder="VD: ENG-8821 hoặc OP-104" required="" type="text" value="ENG-092">
+</div>
+</div>
+<!-- Input 2: Password -->
+<div>
+<label class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5" for="password">
+              Mật khẩu truy cập
+            </label>
+<div class="relative rounded-lg shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<!-- Lock Icon -->
+<svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect>
+<path d="M7 11V7a5 5 0 0110 0v4"></path>
+</svg>
+</div>
+<input class="w-full pl-10 pr-11 py-2.5 bg-slate-900/90 border border-slate-700/80 rounded-lg text-white font-mono text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all duration-200" id="password" name="password" placeholder="••••••••••••" required="" type="password" value="SmartSOP@2025#">
+<!-- Password Toggle Button -->
+<button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-sky-400 focus:outline-none" id="togglePassBtn" onclick="togglePasswordVisibility()" title="Hiện/Ẩn mật khẩu" type="button">
+<svg class="w-4 h-4" fill="none" id="eyeIcon" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Checkbox & Forgot Link -->
+<div class="flex items-center justify-between text-xs pt-1">
+<label class="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
+<input checked="" class="w-4 h-4 rounded bg-slate-900 border-slate-700 text-sky-600 focus:ring-sky-500 focus:ring-offset-slate-900" type="checkbox">
+<span class="">Ghi nhớ ca làm việc</span>
+</label>
+<a class="text-sky-400 hover:text-sky-300 font-medium transition-colors" href="#support">
+              Quên mật khẩu / Báo mất thẻ
+            </a>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full mt-2 group relative flex items-center justify-center gap-2.5 px-5 py-3 rounded-lg font-bold text-sm text-white bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 active:scale-[0.99] border border-sky-400/40 shadow-glow-blue transition-all duration-200" id="loginSubmitBtn" type="submit">
+<span class="">Đăng nhập vào Hệ thống</span>
+<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</form>
+<!-- Simulated Token Notification Banner -->
+<div class="hidden p-3 rounded-lg bg-sky-950/80 border border-sky-500/40 text-xs font-mono text-sky-200 flex items-center gap-2.5 transition-all" id="tokenBadge">
+<svg class="w-4 h-4 text-emerald-400 flex-shrink-0 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<div class="truncate">
+<span class="text-emerald-400 font-bold">RBAC Auth OK:</span> <span id="tokenRoleText" class="">Kỹ sư ca (Shift Engineer)</span>
+<div class="text-[10px] text-slate-400 truncate">Token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVC...</div>
+</div>
+</div>
+<!-- Quick Demo Selector for Examiners (Chấm thi) -->
+<div class="pt-2" data-purpose="examiner-demo-selector">
+<div class="relative flex items-center justify-center mb-4">
+<div class="border-t border-slate-800 w-full"></div>
+<div class="absolute bg-[#0b1329] px-3 text-[11px] font-mono tracking-wider font-semibold text-amber-400 uppercase flex items-center gap-1.5 whitespace-nowrap">
+<svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10h2v4h-2zm0 6h2v2h-2z"></path>
+</svg>
+              CHỌN NHANH TÀI KHOẢN DEMO (DÀNH CHO CHẤM THI)
+            </div>
+</div>
+<!-- Demo Cards List -->
+<div class="space-y-2.5"><!-- Option 1: Shift Engineer (Default Active) -->
+<button class="demo-card-item demo-card-selected w-full text-left p-3.5 rounded-lg border border-slate-800 bg-slate-900/60 hover:border-sky-500/60 hover:bg-slate-800/50 transition-all duration-150 group flex flex-col gap-2" onclick="selectDemoAccount('ENG-092', 'ShiftEng@2025', 'Kỹ sư ca (Shift Engineer)', 'Tra cứu SOP, Báo cáo sự cố P1-P4, Chat AI Copilot', this)" type="button">
+  <div class="flex items-center justify-between w-full gap-2">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="w-2 h-2 rounded-full bg-sky-400 flex-shrink-0"></span>
+      <span class="text-xs font-bold text-white group-hover:text-sky-300 truncate">1. Kỹ sư ca (Shift Engineer)</span>
+    </div>
+    <span class="text-[11px] font-mono bg-sky-950 px-2 py-0.5 rounded text-sky-400 border border-sky-700/50 font-semibold flex-shrink-0">
+      ENG-092
+    </span>
+  </div>
+  <p class="text-[11px] text-slate-400 leading-relaxed pl-4 border-t border-slate-800/60 pt-1.5">
+    <strong class="text-slate-300">Quyền:</strong> Tra cứu SOP nhanh, Gửi báo cáo sự cố P1-P4, Chat AI Copilot xử lý máy SMT.
+  </p>
+</button>
+<!-- Option 2: Plant Manager / Admin -->
+<button class="demo-card-item w-full text-left p-3.5 rounded-lg border border-slate-800 bg-slate-900/60 hover:border-sky-500/60 hover:bg-slate-800/50 transition-all duration-150 group flex flex-col gap-2" onclick="selectDemoAccount('ADM-001', 'AdminSecure@2025', 'Quản lý nhà máy (Plant Manager / Admin)', 'Toàn quyền KPI, Phân quyền dây chuyền, Quản lý tài liệu', this)" type="button">
+  <div class="flex items-center justify-between w-full gap-2">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="w-2 h-2 rounded-full bg-purple-400 flex-shrink-0"></span>
+      <span class="text-xs font-bold text-white group-hover:text-purple-300 truncate">2. Quản lý nhà máy (Plant Manager)</span>
+    </div>
+    <span class="text-[11px] font-mono bg-purple-950 px-2 py-0.5 rounded text-purple-300 border border-purple-700/50 font-semibold flex-shrink-0">
+      ADM-001
+    </span>
+  </div>
+  <p class="text-[11px] text-slate-400 leading-relaxed pl-4 border-t border-slate-800/60 pt-1.5">
+    <strong class="text-slate-300">Quyền:</strong> Dashboard KPI toàn xưởng, Phân quyền Line 01-08, Phê duyệt cập nhật SOP.
+  </p>
+</button>
+<!-- Option 3: Operator -->
+<button class="demo-card-item w-full text-left p-3.5 rounded-lg border border-slate-800 bg-slate-900/60 hover:border-sky-500/60 hover:bg-slate-800/50 transition-all duration-150 group flex flex-col gap-2" onclick="selectDemoAccount('OP-412', 'Operator@2025', 'Công nhân vận hành (Operator)', 'Đọc SOP dây chuyền SMT, Xác nhận Checklist ca', this)" type="button">
+  <div class="flex items-center justify-between w-full gap-2">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+      <span class="text-xs font-bold text-white group-hover:text-amber-300 truncate">3. Công nhân vận hành (Operator)</span>
+    </div>
+    <span class="text-[11px] font-mono bg-amber-950 px-2 py-0.5 rounded text-amber-400 border border-amber-700/50 font-semibold flex-shrink-0">
+      OP-412
+    </span>
+  </div>
+  <p class="text-[11px] text-slate-400 leading-relaxed pl-4 border-t border-slate-800/60 pt-1.5">
+    <strong class="text-slate-300">Quyền:</strong> Màn hình tinh gọn, Đọc bước thao tác chuẩn dây chuyền SMT, Xác nhận Checklist ca.
+  </p>
+</button></div>
+</div>
+<!-- Security Compliance & Industrial Support Footer -->
+<footer class="pt-2 border-t border-slate-800/80 text-center space-y-1.5" data-purpose="auth-footer-notes">
+<p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Hệ thống bảo mật công nghiệp chuẩn <strong class="text-slate-300">IEC 62443 / OT Security</strong>
+</p>
+<p class="text-[11px] text-slate-500 font-mono">
+            Hỗ trợ kỹ thuật dây chuyền: <span class="text-sky-400 font-semibold">Ext 8800 (Phòng IT/OT Nhà máy)</span>
+</p>
+</footer>
+</div>
+</section>
+<!-- END: RightAuthColumn -->
+</main>
+<!-- END: MainContainer -->
+<!-- JavaScript: Quick Account Switcher & UI Interactivity -->
+<script data-purpose="auth-interactivity">
+    // Toggle Password Visibility
+    function togglePasswordVisibility() {
+      const passInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('eyeIcon');
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+        `;
+      } else {
+        passInput.type = 'password';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        `;
+      }
+    }
+
+    // Select Quick Demo Account for Grading
+    function selectDemoAccount(code, password, roleName, permissions, cardElement) {
+      // 1. Populate Form Inputs
+      document.getElementById('staffId').value = code;
+      document.getElementById('password').value = password;
+
+      // 2. Highlight selected Card
+      const cards = document.querySelectorAll('.demo-card-item');
+      cards.forEach(card => card.classList.remove('demo-card-selected'));
+      if (cardElement) {
+        cardElement.classList.add('demo-card-selected');
+      }
+
+      // 3. Show JWT simulated notification
+      const badge = document.getElementById('tokenBadge');
+      const roleText = document.getElementById('tokenRoleText');
+      roleText.textContent = `${roleName} • [${code}]`;
+      badge.classList.remove('hidden');
+
+      // Subtle pulse feedback
+      badge.classList.add('scale-[1.02]');
+      setTimeout(() => badge.classList.remove('scale-[1.02]'), 200);
+    }
+
+    // Trigger Auth Button Action
+    function triggerAuth() {
+      const btn = document.getElementById('loginSubmitBtn');
+      const id = document.getElementById('staffId').value || 'USER';
+      const originalHTML = btn.innerHTML;
+
+      btn.disabled = true;
+      btn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Đang kết nối SCADA Edge...</span>
+      `;
+
+      setTimeout(() => {
+        btn.innerHTML = `
+          <svg class="w-4 h-4 text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Xác thực thành công! Đang chuyển hướng...</span>
+        `;
+        btn.classList.remove('from-sky-600', 'to-blue-600');
+        btn.classList.add('bg-emerald-600');
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = originalHTML;
+          btn.classList.remove('bg-emerald-600');
+          btn.classList.add('from-sky-600', 'to-blue-600');
+        }, 2200);
+      }, 900);
+    }
+  </script>
+<script src="../demo-bridge.js"></script>
+</body></html>

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0f1f38"/>
+      <stop offset="60%" stop-color="#090f1d"/>
+      <stop offset="100%" stop-color="#040711"/>
+    </radialGradient>
+
+    <!-- Neon Cyan Gradients -->
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+
+    <linearGradient id="cyanGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="50%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#a5f3fc"/>
+    </linearGradient>
+
+    <!-- Amber AI Gold Accent -->
+    <linearGradient id="amberGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <!-- Metallic Shield Gradient -->
+    <linearGradient id="metalRim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Container / Canvas -->
+  <rect width="512" height="512" rx="108" fill="url(#bgGrad)"/>
+  <rect width="510" height="510" x="1" y="1" rx="107" stroke="url(#cyanGlow)" stroke-width="2" stroke-opacity="0.35"/>
+  <rect width="496" height="496" x="8" y="8" rx="100" stroke="#1e293b" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Background Subtle Circuit Traces -->
+  <g stroke="#0284c7" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round">
+    <path d="M 64 160 L 140 160 L 175 195"/>
+    <path d="M 448 160 L 372 160 L 337 195"/>
+    <path d="M 64 352 L 140 352 L 175 317"/>
+    <path d="M 448 352 L 372 352 L 337 317"/>
+    <circle cx="140" cy="160" r="3" fill="#0284c7" fill-opacity="0.3"/>
+    <circle cx="372" cy="160" r="3" fill="#0284c7" fill-opacity="0.3"/>
+    <circle cx="140" cy="352" r="3" fill="#0284c7" fill-opacity="0.3"/>
+    <circle cx="372" cy="352" r="3" fill="#0284c7" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Ambient Center Flare -->
+  <circle cx="256" cy="256" r="130" fill="#0284c7" fill-opacity="0.12" filter="url(#intenseGlow)"/>
+
+  <!-- Outer Isometric Hex-Shield (Industrial Smart Chassis) -->
+  <polygon points="256,72 416,164 416,348 256,440 96,348 96,164" fill="url(#metalRim)" stroke="url(#neonCyan)" stroke-width="4" stroke-linejoin="round" filter="url(#glowFilter)"/>
+
+  <!-- Secondary Inner Hex-Frame with Tech Corner Notches -->
+  <polygon points="256,104 388,180 388,332 256,408 124,332 124,180" fill="#060d1d" fill-opacity="0.88" stroke="#1e3a5f" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- High-Precision Microchip Circuit Nodes connecting to Hexagon Edge -->
+  <g stroke="url(#cyanGlow)" stroke-width="3" stroke-linecap="round" filter="url(#glowFilter)">
+    <!-- Top & Bottom Pin connectors -->
+    <line x1="256" y1="72" x2="256" y2="136"/>
+    <line x1="256" y1="376" x2="256" y2="440"/>
+    <!-- Diagonal Pin connectors -->
+    <line x1="124" y1="180" x2="176" y2="210"/>
+    <line x1="388" y1="180" x2="336" y2="210"/>
+    <line x1="124" y1="332" x2="176" y2="302"/>
+    <line x1="388" y1="332" x2="336" y2="302"/>
+  </g>
+
+  <!-- Glowing Terminal Connection Nodes -->
+  <circle cx="256" cy="136" r="5" fill="#38bdf8" filter="url(#glowFilter)"/>
+  <circle cx="256" cy="376" r="5" fill="#38bdf8" filter="url(#glowFilter)"/>
+  <circle cx="176" cy="210" r="4.5" fill="#38bdf8"/>
+  <circle cx="336" cy="210" r="4.5" fill="#38bdf8"/>
+  <circle cx="176" cy="302" r="4.5" fill="#38bdf8"/>
+  <circle cx="336" cy="302" r="4.5" fill="#38bdf8"/>
+
+  <!-- Distinctive "S" Monogram Integrated with AI Neural Node Core -->
+  <!-- Top Arm of Stylized "S" -->
+  <path d="M 334 198 L 226 198 C 200 198 184 214 184 238 C 184 262 204 274 232 278 L 280 286 C 314 292 334 306 334 334 C 334 362 310 380 278 380 L 176 380" 
+        stroke="url(#cyanGlow)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glowFilter)"/>
+
+  <!-- High-Precision Metallic Inner Inlay of the "S" -->
+  <path d="M 324 206 L 230 206 C 210 206 196 218 196 236 C 196 254 212 264 236 268 L 276 274 C 304 278 322 290 322 318 C 322 344 302 364 274 364 L 186 364" 
+        stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.95"/>
+
+  <!-- AI Intelligence Neural Core (Geometric Diamond + Amber Synapse Node) -->
+  <g transform="translate(256, 256)">
+    <!-- Rotating Cyber Pulse Ring -->
+    <polygon points="0,-32 32,0 0,32 -32,0" fill="#0284c7" fill-opacity="0.35" stroke="url(#cyanGlow)" stroke-width="2" filter="url(#glowFilter)"/>
+    <!-- Central AI Neural Energy Spark -->
+    <circle cx="0" cy="0" r="12" fill="url(#amberGold)" filter="url(#intenseGlow)"/>
+    <circle cx="0" cy="0" r="5" fill="#fffef0"/>
+    <!-- 4 Cardinal AI Rays -->
+    <line x1="0" y1="-26" x2="0" y2="-16" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="0" y1="16" x2="0" y2="26" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-26" y1="0" x2="-16" y2="0" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="16" y1="0" x2="26" y2="0" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Micro-Tech Chip Corner Dots & Branding Accents -->
+  <circle cx="256" cy="72" r="4" fill="#fbbf24" filter="url(#glowFilter)"/>
+  <rect x="246" y="448" width="20" height="4" rx="2" fill="#38bdf8" fill-opacity="0.6"/>
+</svg>

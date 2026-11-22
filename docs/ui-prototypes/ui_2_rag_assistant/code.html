@@ -1,0 +1,434 @@
+<!DOCTYPE html><html class="h-full bg-[#070d19]" lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SmartSOP AI - Trợ Lý Kỹ Thuật Nhà Xưởng SMT</title>
+<!-- Inter Font Family -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            factory: {
+              950: '#070d19',
+              900: '#0b1326',
+              850: '#0f172a',
+              800: '#131f37',
+              700: '#1e293b',
+              600: '#334155',
+            },
+            signal: {
+              blue: '#0284c7',
+              cyan: '#38bdf8',
+              glow: 'rgba(56, 189, 248, 0.15)',
+            },
+            hazard: {
+              amber: '#f59e0b',
+              red: '#ef4444',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Industrial Styles -->
+<style data-purpose="custom-scrollbars">
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1326;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+<style data-purpose="neon-effects">
+    .glow-cyan-border {
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2), inset 0 0 12px rgba(56, 189, 248, 0.05);
+    }
+    .glow-amber-border {
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.15);
+    }
+    .scanline {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+    }
+  </style>
+<!-- END: Custom Industrial Styles -->
+</head>
+<body class="h-full text-slate-200 antialiased flex overflow-hidden font-sans select-none">
+<!-- BEGIN: Left Industrial Sidebar -->
+<aside class="w-64 bg-factory-900 border-r border-slate-800/80 flex flex-col justify-between flex-shrink-0 z-20" data-purpose="primary-sidebar">
+<div>
+<!-- Brand Logo Header -->
+<div class="h-16 flex items-center px-4 gap-3 border-b border-slate-800/90 bg-factory-950/60">
+<div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-sky-600 to-cyan-400 p-[1px] flex items-center justify-center shadow-lg shadow-sky-500/20">
+<div class="h-full w-full bg-factory-900 rounded-[7px] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" aria-hidden="true" class="lucide lucide-cpu w-5 h-5 text-cyan-400"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-extrabold tracking-wider text-white text-base">SmartSOP</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono font-semibold">AI v4.2</span>
+</div>
+<p class="text-[11px] text-slate-400 font-medium">Trợ Lý Kỹ Thuật SMT</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="p-3 space-y-1"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-dashboard" aria-hidden="true" class="lucide lucide-layout-dashboard w-4 h-4 text-slate-400"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg><span class="">Dashboard KPI &amp; Vận hành</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg bg-sky-950/60 border border-cyan-500/40 text-cyan-300 font-semibold text-xs transition-colors shadow-sm shadow-cyan-500/20" href="#"><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-4 h-4 text-cyan-400 animate-pulse"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><span class="">Trợ Lý AI Tra Cứu</span></div><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open w-4 h-4 text-slate-400"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg><span class="">Kho Tài Liệu SOP &amp; PDF</span></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="alert-triangle" aria-hidden="true" class="lucide lucide-alert-triangle w-4 h-4 text-amber-400/80"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg><span class="">Phiếu Sự Cố Máy Móc</span></div><span class="px-1.5 py-0.5 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] rounded font-mono">3 Mới</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-[#131b2e] text-xs font-medium transition-colors" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sliders" aria-hidden="true" class="lucide lucide-sliders w-4 h-4 text-slate-400"><path d="M10 8h4"></path><path d="M12 21v-9"></path><path d="M12 8V3"></path><path d="M17 16h4"></path><path d="M19 12V3"></path><path d="M19 21v-5"></path><path d="M3 14h4"></path><path d="M5 10V3"></path><path d="M5 21v-7"></path></svg><span class="">Quản Trị &amp; Cấu Hình Hệ Thống</span></a></nav>
+</div>
+<!-- Sidebar Bottom: Engineer Shift Profile -->
+<div class="p-3 border-t border-slate-800/80 bg-factory-950/70" data-purpose="user-shift-profile">
+<div class="bg-factory-850/80 border border-slate-700/60 rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="relative">
+<div class="w-8 h-8 rounded-md bg-slate-700 flex items-center justify-center font-bold text-xs text-sky-300 border border-slate-600">
+              A
+            </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-factory-900 rounded-full"></span>
+</div>
+<div class="overflow-hidden">
+<h4 class="text-xs font-semibold text-slate-100 truncate">Nguyễn Văn A</h4>
+<p class="text-[10px] text-slate-400 font-mono truncate">Ca 1 (06:00 - 14:00)</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-white p-1 hover:bg-slate-700/50 rounded transition-colors" title="Chuyển ca trực">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" aria-hidden="true" class="lucide lucide-log-out w-3.5 h-3.5"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+</button>
+</div>
+<div class="mt-2 flex items-center justify-between text-[10px] text-slate-500 px-1 font-mono">
+<span class="">Xưởng: SMT-Floor-02</span>
+<span class="text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>ESD Validated</span>
+</div>
+</div>
+</aside>
+<!-- END: Left Industrial Sidebar -->
+<!-- BEGIN: Main Interface Area -->
+<div class="flex-1 flex flex-col h-full bg-[#090f1d] overflow-hidden">
+<!-- BEGIN: Top SCADA & Context Header -->
+<header class="h-16 border-b border-slate-800/90 bg-factory-900/80 backdrop-blur-md px-6 flex items-center justify-between z-10" data-purpose="app-header">
+<!-- Left: Breadcrumb & Context Selection -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-xs font-medium text-slate-400">
+<span class="">Nhà xưởng SMT</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-3 h-3 text-slate-600"><path d="m9 18 6-6-6-6"></path></svg>
+<span class="text-slate-200">Dây chuyền 01</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-3 h-3 text-slate-600"><path d="m9 18 6-6-6-6"></path></svg>
+<span class="text-cyan-400 font-semibold">Trợ Lý Kỹ Thuật AI</span>
+</div>
+<div class="h-5 w-[1px] bg-slate-800"></div>
+<!-- Machine & Line Selector Dropdowns -->
+<div class="flex items-center gap-2 font-mono text-xs">
+<!-- Line Badge -->
+<div class="flex items-center gap-1.5 bg-factory-800/90 border border-slate-700/70 hover:border-cyan-500/50 px-2.5 py-1 rounded cursor-pointer transition-all">
+<span class="text-slate-400 text-[11px]">Line:</span>
+<span class="text-slate-100 font-semibold">SMT-01</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down w-3 h-3 text-slate-400 ml-0.5"><path d="m6 9 6 6 6-6"></path></svg>
+</div>
+<!-- Machine Badge -->
+<div class="flex items-center gap-1.5 bg-factory-800/90 border border-slate-700/70 hover:border-cyan-500/50 px-2.5 py-1 rounded cursor-pointer transition-all">
+<span class="text-slate-400 text-[11px]">Thiết bị:</span>
+<span class="text-cyan-300 font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              FUJI-NXT-III-03
+            </span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down w-3 h-3 text-slate-400 ml-0.5"><path d="m6 9 6 6 6-6"></path></svg>
+</div>
+</div>
+</div>
+<!-- Right: Telemetry & Actions -->
+<div class="flex items-center gap-4">
+<!-- Live SCADA Link Status -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-emerald-950/40 border border-emerald-800/50 rounded text-emerald-400 text-xs font-mono">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="">SCADA IoT: Kết Nối Ổn Định (118ms)</span>
+</div>
+<div class="flex items-center gap-2">
+<!-- Quick Search Hotkey Button -->
+<button class="flex items-center gap-2 px-2.5 py-1 bg-factory-800 border border-slate-700 rounded text-slate-400 hover:text-slate-200 text-xs">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-3.5 h-3.5"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+<span class="font-mono text-[10px] bg-slate-900 px-1 py-0.5 rounded border border-slate-700">Ctrl + K</span>
+</button>
+<!-- Notification Bell -->
+<button class="relative p-1.5 bg-factory-800 border border-slate-700 rounded text-slate-300 hover:text-white hover:border-slate-600 transition-colors">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bell" aria-hidden="true" class="lucide lucide-bell w-4 h-4"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+<span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-500 text-black text-[9px] font-bold flex items-center justify-center">2</span>
+</button>
+<!-- Language Selector -->
+<div class="flex items-center text-xs font-mono font-medium border border-slate-700 rounded overflow-hidden">
+<button class="bg-cyan-950 text-cyan-400 px-2 py-1 font-semibold">VI</button>
+<button class="bg-factory-800 text-slate-400 hover:text-slate-200 px-2 py-1">EN</button>
+</div>
+</div>
+</div>
+</header>
+<!-- END: Top SCADA & Context Header -->
+<!-- BEGIN: RAG Industrial Workspace -->
+<main class="flex-1 flex flex-col overflow-hidden relative" data-purpose="rag-chat-workspace">
+<!-- Sub-header: RAG Status & Fast Prompts (Compact 1-Line) -->
+<div class="px-5 py-1.5 bg-factory-900/60 border-b border-slate-800/80 flex items-center justify-between gap-3 text-xs flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 text-cyan-400 font-mono text-[11px]">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" aria-hidden="true" class="lucide lucide-database w-3.5 h-3.5 text-cyan-400"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+RAG Vector Engine Active (4,520 SOPs Indexed)
+</span>
+</div>
+<!-- Quick Query Pill Buttons -->
+<div class="flex items-center gap-1.5 overflow-x-auto py-0.5"><span class="text-slate-400 font-mono text-[11px] whitespace-nowrap flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="history" aria-hidden="true" class="lucide lucide-history w-3 h-3 text-cyan-400"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg><span class="">Tra cứu nhanh:</span></span><button class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-factory-800/90 hover:bg-factory-700 text-slate-200 text-[11px] border border-slate-700/80 hover:border-cyan-500/50 transition-all whitespace-nowrap group"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span><span class="font-semibold text-slate-100 group-hover:text-cyan-300">E-204 Kẹt cuộn Feeder</span><span class="text-[10px] font-mono px-1 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700">SMT-01</span></button><button class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-factory-800/90 hover:bg-factory-700 text-slate-200 text-[11px] border border-slate-700/80 hover:border-cyan-500/50 transition-all whitespace-nowrap group"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span><span class="font-semibold text-slate-100 group-hover:text-cyan-300">T-102 Lệch nhiệt độ buồng 3 Reflow</span><span class="text-[10px] font-mono px-1 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700">Reflow-02</span></button><button class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-factory-800/90 hover:bg-factory-700 text-slate-200 text-[11px] border border-slate-700/80 hover:border-cyan-500/50 transition-all whitespace-nowrap group"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span><span class="font-semibold text-slate-100 group-hover:text-cyan-300">A-105 Lỗi Fiducial Mark bo mạch</span><span class="text-[10px] font-mono px-1 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700">AOI-03</span></button><button class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-factory-800/90 hover:bg-factory-700 text-slate-200 text-[11px] border border-slate-700/80 hover:border-cyan-500/50 transition-all whitespace-nowrap group"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span><span class="font-semibold text-slate-100 group-hover:text-cyan-300">R-088 Áp suất hút chân không yếu</span><span class="text-[10px] font-mono px-1 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700">SMT-02</span></button></div>
+</div>
+<!-- BEGIN: Scrollable Chat Message History (Optimized Compact Overview) -->
+<div class="flex-1 overflow-y-auto px-5 py-3 space-y-3" id="chat-conversation-container">
+<!-- USER QUERY BUBBLE -->
+<div class="flex items-start gap-2.5 max-w-4xl ml-auto justify-end" data-purpose="user-query">
+<div class="flex flex-col items-end space-y-1">
+<div class="flex items-center gap-2 text-[10px] text-slate-400 font-mono">
+<span class="">09:42:15 AM</span>
+<span class="font-semibold text-slate-300">Kỹ sư Nguyễn Văn A</span>
+<span class="px-1 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700">Trạm SMT-01</span>
+</div>
+<div class="bg-gradient-to-r from-sky-900/60 to-blue-900/60 border border-sky-600/40 text-slate-100 px-3.5 py-2 rounded-xl rounded-tr-sm shadow-md text-xs sm:text-sm leading-relaxed">
+<p class="">Máy gắp linh kiện báo lỗi <strong class="text-cyan-300 font-mono">E-204 kẹt cuộn feeder W08b</strong> tại trạm số 3, xử lý thế nào để không lệch tọa độ bo mạch?</p>
+<!-- Query Context Badges -->
+<div class="mt-1.5 pt-1 border-t border-sky-800/50 flex flex-wrap gap-1.5 font-mono text-[10px]" id="user-query-badges">
+<span class="px-1.5 py-0.2 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">Mã: E-204</span>
+<span class="px-1.5 py-0.2 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">Thiết bị: FUJI-NXT-03</span>
+<span class="px-1.5 py-0.2 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60">Module: Feeder W08b (8mm)</span>
+</div>
+</div>
+</div>
+<!-- User Avatar -->
+<div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center flex-shrink-0 text-slate-300 shadow">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hard-hat" aria-hidden="true" class="lucide lucide-hard-hat w-4 h-4 text-amber-400"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path><path d="M14 6a6 6 0 0 1 6 6v3"></path><path d="M4 15v-3a6 6 0 0 1 6-6"></path><rect x="2" y="15" width="20" height="4" rx="1"></rect></svg>
+</div>
+</div>
+<!-- AI RESPONSE BUBBLE (High Precision Industrial RAG) -->
+<div class="flex items-start gap-2.5 max-w-5xl" data-purpose="ai-rag-response">
+<!-- AI Bot Avatar -->
+<div class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-500/50 flex items-center justify-center flex-shrink-0 shadow-md shadow-cyan-900/30">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bot" aria-hidden="true" class="lucide lucide-bot w-4 h-4 text-cyan-400"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+</div>
+<div class="flex-1 space-y-2">
+<!-- AI Meta Details -->
+<div class="flex items-center gap-2 text-[11px]">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-cyan-300">SmartSOP AI System</span>
+<span class="px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-400 border border-emerald-800/60 font-mono text-[9px]">Phản hồi: 0.8s</span>
+</div>
+<span class="text-slate-600">•</span>
+<span class="text-[10px] text-slate-400 font-mono">Google Gemini 1.5 Flash + BAAI/bge-m3</span>
+</div>
+<!-- Content Card -->
+<div class="bg-factory-900 border border-slate-700/80 rounded-xl p-3.5 shadow-xl space-y-2.5">
+<!-- 1. SAFETY WARNING BANNER (Compact Alert Strip) -->
+<div class="bg-hazard-amber/10 border-l-4 border-amber-500 rounded-r-lg px-3 py-1.5 flex items-center gap-2.5 glow-amber-border" data-purpose="safety-alert">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="alert-octagon" aria-hidden="true" class="lucide lucide-alert-octagon w-4 h-4 text-amber-400 flex-shrink-0"><path d="M12 16h.01"></path><path d="M12 8v4"></path><path d="M15.312 2a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586l-4.688-4.688A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2z"></path></svg>
+<p class="text-xs text-amber-200">
+<strong class="font-mono uppercase text-amber-300 mr-1.5">CẢNH BÁO AN TOÀN:</strong>
+Nhấn nút <strong class="underline decoration-amber-400 font-mono font-bold">STOP khẩn cấp</strong> trên cụm điều khiển và đeo <strong class="underline decoration-amber-400 font-bold">găng tay ESD</strong> trước khi mở nắp can thiệp!
+</p>
+</div>
+<!-- 2. Root Cause Diagnostic -->
+<div class="space-y-1" data-purpose="root-cause-analysis">
+<div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-200 font-mono">
+<span class="flex h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
+1. NGUYÊN NHÂN KỸ THUẬT (DIAGNOSIS):
+</div>
+<div class="text-xs text-slate-300 bg-factory-850/80 px-3 py-1.5 rounded-lg border border-slate-800 leading-relaxed font-sans" id="ai-diagnosis-text">
+Băng keo màng bọc linh kiện kích thước <strong>0402</strong> bị đứt kẹt trong bánh răng hoặc lực căng cuộn feeder W08b vượt ngưỡng cảm biến mô-men xoắn (<span class="font-mono text-cyan-300 font-semibold">Torque Sensor &gt; 1.2Nm</span>), dẫn đến tín hiệu dừng khẩn E-204 để tránh trượt bước động cơ.
+</div>
+</div>
+<!-- 3. Resolution Step-by-Step Checklist (2x2 Grid for High-Overview Density) -->
+<div class="space-y-1.5" data-purpose="resolution-steps">
+<div class="flex items-center justify-between text-[11px] font-mono">
+<div class="flex items-center gap-1.5 font-bold text-slate-200">
+<span class="flex h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
+2. QUY TRÌNH 4 BƯỚC XỬ LÝ CHUẨN (STANDARD RESOLUTION):
+</div>
+<span class="text-[10px] text-slate-400">Ước tính: ~2 phút 30 giây</span>
+</div>
+<!-- 2x2 Grid Layout for Instant Visual Overview -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs" id="ai-steps-container">
+<!-- Step 1 -->
+<div class="flex items-start gap-2 p-2 rounded-lg bg-factory-850 border border-slate-700/60 hover:border-slate-600 transition-colors">
+<span class="h-5 w-5 rounded bg-sky-950 border border-sky-600 text-sky-400 flex items-center justify-center font-mono font-bold text-[10px] flex-shrink-0 mt-0.5">
+01
+</span>
+<div class="flex-1 text-[11px] leading-snug">
+<span class="text-slate-200">Mở nắp bảo vệ số 2 máy FUJI NXT. Kiểm tra đèn LED sensor trạng thái tại slot nạp <span class="font-mono text-cyan-300 bg-slate-900 px-1 py-0.2 rounded border border-slate-700">Slot F-14</span>.</span>
+<span class="ml-1 text-[9px] text-emerald-400 bg-emerald-950/60 px-1 py-0.2 rounded border border-emerald-800 font-mono">Bắt buộc</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-2 p-2 rounded-lg bg-factory-850 border border-slate-700/60 hover:border-slate-600 transition-colors">
+<span class="h-5 w-5 rounded bg-sky-950 border border-sky-600 text-sky-400 flex items-center justify-center font-mono font-bold text-[10px] flex-shrink-0 mt-0.5">
+02
+</span>
+<div class="flex-1 text-[11px] leading-snug">
+<span class="text-slate-200">Nhấn cần gạt nhả khóa (<span class="text-amber-300 font-medium">Release Lever màu xanh lá</span>) để tháo cụm cuộn feeder W08b ra khỏi rãnh nạp máy.</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-2 p-2 rounded-lg bg-factory-850 border border-slate-700/60 hover:border-slate-600 transition-colors">
+<span class="h-5 w-5 rounded bg-sky-950 border border-sky-600 text-sky-400 flex items-center justify-center font-mono font-bold text-[10px] flex-shrink-0 mt-0.5">
+03
+</span>
+<div class="flex-1 text-[11px] leading-snug">
+<span class="text-slate-200">Cắt bỏ đúng <strong>3 mắt băng dính</strong> linh kiện biến dạng, làm sạch bụi cảm biến quang học bằng tăm bông nhúng cồn <span class="font-mono text-cyan-300">IPA 99%</span>.</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex items-start gap-2 p-2 rounded-lg bg-factory-850 border border-slate-700/60 hover:border-slate-600 transition-colors">
+<span class="h-5 w-5 rounded bg-sky-950 border border-sky-600 text-sky-400 flex items-center justify-center font-mono font-bold text-[10px] flex-shrink-0 mt-0.5">
+04
+</span>
+<div class="flex-1 text-[11px] leading-snug">
+<span class="text-slate-200">Nạp lại cuộn vào rãnh dẫn hướng, căn thẳng lỗ sprocket và nhấn nút <span class="font-mono text-cyan-300 bg-slate-900 px-1 py-0.2 rounded border border-slate-700 font-semibold">[Reset Lỗi &amp; Zero-Calibrate]</span>.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. RAG GROUNDING & CITATION SOURCES PANEL (Compact 2-Col Grid) -->
+<div class="pt-2 border-t border-slate-800 space-y-1.5" data-purpose="rag-grounding-citations">
+<div class="flex items-center justify-between text-[11px] font-mono">
+<div class="flex items-center gap-1.5 font-bold text-slate-300">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="paperclip" aria-hidden="true" class="lucide lucide-paperclip w-3.5 h-3.5 text-cyan-400"><path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"></path></svg>
+<span class="">NGUỒN TRÍCH DẪN RAG GROUNDING (2 TÀI LIỆU):</span>
+</div>
+<span class="text-[10px] text-slate-500">Cosine Sim: 0.96 - 0.89</span>
+</div>
+<!-- Citation Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+<!-- Citation 1 -->
+<div class="p-2 rounded-lg bg-factory-800/90 border border-slate-700/80 hover:border-cyan-500/50 transition-all flex items-center justify-between group">
+<div class="flex items-center gap-2 min-w-0">
+<span class="p-1 rounded bg-red-950/80 border border-red-800/50 text-red-400 flex-shrink-0">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-3.5 h-3.5"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+</span>
+<div class="truncate">
+<div class="flex items-center gap-1.5 font-mono text-[11px]">
+<span class="font-bold text-slate-200">SOP-SMT-001</span>
+<span class="text-[9px] px-1 py-0.2 rounded bg-emerald-950 text-emerald-300 border border-emerald-800/70 font-semibold">Khớp 96%</span>
+</div>
+<h6 class="text-[10px] text-slate-400 truncate">Trang 4, Mục 3.2: Kẹt màng cuộn Feeder</h6>
+</div>
+</div>
+<button class="inline-flex items-center gap-1 text-[11px] font-mono text-cyan-400 hover:text-cyan-300 font-semibold px-2 py-1 rounded hover:bg-slate-700/60 flex-shrink-0 cursor-pointer">
+<span class="">👁 Xem PDF</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-3 h-3"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+<!-- Citation 2 -->
+<div class="p-2 rounded-lg bg-factory-800/90 border border-slate-700/80 hover:border-cyan-500/50 transition-all flex items-center justify-between group">
+<div class="flex items-center gap-2 min-w-0">
+<span class="p-1 rounded bg-sky-950/80 border border-sky-800/50 text-sky-400 flex-shrink-0">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-3.5 h-3.5"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+</span>
+<div class="truncate">
+<div class="flex items-center gap-1.5 font-mono text-[11px]">
+<span class="font-bold text-slate-200">Manual-FUJI-NXT</span>
+<span class="text-[9px] px-1 py-0.2 rounded bg-sky-950 text-sky-300 border border-sky-800/70 font-semibold">Khớp 89%</span>
+</div>
+<h6 class="text-[10px] text-slate-400 truncate">Trang 12: Bảng mã lỗi mô-men xoắn Feeder</h6>
+</div>
+</div>
+<button class="inline-flex items-center gap-1 text-[11px] font-mono text-cyan-400 hover:text-cyan-300 font-semibold px-2 py-1 rounded hover:bg-slate-700/60 flex-shrink-0 cursor-pointer">
+<span class="">👁 Xem PDF</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-3 h-3"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- 5. Interactive Assistant Action Toolbar (Slim Inline Bar) -->
+<div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs" data-purpose="response-actions">
+<div class="flex items-center gap-1.5">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-factory-800 hover:bg-factory-700 border border-slate-700 text-[11px] text-slate-300 font-medium transition-colors cursor-pointer">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ticket" aria-hidden="true" class="lucide lucide-ticket w-3 h-3 text-amber-400"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M13 5v2"></path><path d="M13 17v2"></path><path d="M13 11v2"></path></svg>
+<span class="">Tạo phiếu sự cố (P2)</span>
+</button>
+<button class="inline-flex items-center gap-1 px-2 py-1 rounded bg-factory-800 hover:bg-factory-700 border border-slate-700 text-[11px] text-slate-300 transition-colors">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="printer" aria-hidden="true" class="lucide lucide-printer w-3 h-3 text-slate-400"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
+<span class="">In</span>
+</button>
+<button class="inline-flex items-center gap-1 px-2 py-1 rounded bg-factory-800 hover:bg-factory-700 border border-slate-700 text-[11px] text-slate-300 transition-colors">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="copy" aria-hidden="true" class="lucide lucide-copy w-3 h-3 text-slate-400"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<span class="">Sao chép</span>
+</button>
+</div>
+<!-- Feedback Ratings -->
+<div class="flex items-center gap-1 text-[10px] text-slate-400">
+<span class="">Đánh giá:</span>
+<button class="p-1 hover:bg-factory-800 text-slate-400 hover:text-emerald-400 rounded" title="Hữu ích">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="thumbs-up" aria-hidden="true" class="lucide lucide-thumbs-up w-3.5 h-3.5"><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path><path d="M7 10v12"></path></svg>
+</button>
+<button class="p-1 hover:bg-factory-800 text-slate-400 hover:text-red-400 rounded" title="Chưa chính xác">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="thumbs-down" aria-hidden="true" class="lucide lucide-thumbs-down w-3.5 h-3.5"><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"></path><path d="M17 14V2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Scrollable Chat Message History -->
+<!-- BEGIN: Bottom Industrial Command Console & Ultra-Slim Input Bar -->
+<footer class="p-2.5 bg-factory-950/95 border-t border-slate-800/90 relative z-10 flex-shrink-0" data-purpose="chat-input-console">
+<div class="max-w-5xl mx-auto flex items-center gap-2">
+<!-- Fast Action Chips -->
+<button class="flex items-center gap-1 px-2.5 py-2 rounded-lg bg-factory-850 hover:bg-slate-800 text-slate-300 text-[11px] border border-slate-700/80 font-medium whitespace-nowrap transition-colors hover:border-cyan-500/50 flex-shrink-0 cursor-pointer" title="Chọn nhanh mã lỗi máy">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hash" aria-hidden="true" class="lucide lucide-hash w-3.5 h-3.5 text-cyan-400"><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></svg>
+<span class="hidden sm:inline font-mono">Mã lỗi</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-2 rounded-lg bg-factory-850 hover:bg-slate-800 text-slate-300 text-[11px] border border-slate-700/80 font-medium whitespace-nowrap transition-colors hover:border-cyan-500/50 flex-shrink-0 cursor-pointer" title="Mẫu câu hỏi thường gặp">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bookmark" aria-hidden="true" class="lucide lucide-bookmark w-3.5 h-3.5 text-amber-400"><path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"></path></svg>
+<span class="hidden sm:inline">Mẫu hỏi</span>
+</button>
+<!-- Text Input Capsule -->
+<div class="flex-1 relative bg-factory-900 border border-slate-700 rounded-lg focus-within:border-cyan-500 focus-within:ring-1 focus-within:ring-cyan-500/50 flex items-center px-3 py-0.5">
+<textarea class="w-full bg-transparent border-0 text-slate-100 placeholder-slate-500 text-xs sm:text-sm focus:ring-0 resize-none py-1.5 font-sans" placeholder="Nhập câu hỏi kỹ thuật hoặc mã lỗi máy (VD: E-204, lệch nhiệt độ reflow, AOI fiducial...)" rows="1" style="max-height: 70px;"></textarea>
+<span class="text-[10px] text-slate-500 font-mono hidden md:inline ml-2 whitespace-nowrap">Enter ↵</span>
+</div>
+<!-- Primary Send Action Button -->
+<button class="h-9 px-3.5 rounded-lg bg-gradient-to-r from-sky-600 to-cyan-500 hover:from-sky-500 hover:to-cyan-400 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-sky-600/30 flex-shrink-0 transition-all active:scale-95 cursor-pointer">
+<span class="">Gửi</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="send" aria-hidden="true" class="lucide lucide-send w-3.5 h-3.5"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+</button>
+</div>
+</footer>
+<!-- END: Bottom Industrial Command Console & Input Bar -->
+</main>
+<!-- END: RAG Industrial Workspace -->
+</div>
+<!-- END: Main Interface Area -->
+<!-- BEGIN: Interactive Icons Script -->
+<script data-purpose="lucide-icons-init">
+    // Initialize Lucide icons with customized stroke widths
+    lucide.createIcons();
+  </script>
+<!-- END: Interactive Icons Script -->
+
+
+
+
+<script src="../demo-bridge.js"></script>
+</body></html>

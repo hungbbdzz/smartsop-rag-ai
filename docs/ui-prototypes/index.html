@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full bg-[#070d19]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartSOP AI - Interactive Prototype & Presentation Hub</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #070d19; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    .tab-active {
+      background: rgba(2, 132, 199, 0.25) !important;
+      border-color: #38bdf8 !important;
+      color: #38bdf8 !important;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col bg-[#070d19] text-slate-200 font-sans overflow-hidden select-none">
+
+  <!-- ======================================================== -->
+  <!-- TOP CONTROL & DEMO COMMAND CONSOLE                       -->
+  <!-- ======================================================== -->
+  <header id="hub-main-header" class="bg-[#0b1326] border-b border-slate-800 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2.5 flex-shrink-0 z-30 shadow-xl transition-all duration-300">
+    
+    <!-- Left: Branding & Tag -->
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-600 to-cyan-400 p-[1px] flex items-center justify-center shadow-md shadow-cyan-500/20">
+        <div class="w-full h-full bg-[#0b1326] rounded-[7px] flex items-center justify-center">
+          <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center gap-1.5">
+          <span class="font-extrabold tracking-wider text-white text-sm">SmartSOP <span class="text-cyan-400">AI</span></span>
+          <span class="text-[9px] font-mono px-1 py-0.2 rounded bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-semibold">Demo Hub</span>
+        </div>
+        <p class="text-[10px] text-slate-400 font-medium">SMT Factory RAG Assistant • Interactive Prototype</p>
+      </div>
+    </div>
+
+    <!-- Center: 6 Screen Navigation Tabs -->
+    <nav class="flex items-center gap-1 bg-[#070d19] border border-slate-800 p-0.5 rounded-lg overflow-x-auto max-w-full">
+      <button onclick="switchScreen('ui_1_login', this)" class="screen-tab tab-active flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold border border-transparent hover:bg-slate-800 text-slate-300 transition-all whitespace-nowrap">
+        <i data-lucide="log-in" class="w-3.5 h-3.5 text-slate-400"></i>
+        <span>1. Đăng Nhập</span>
+      </button>
+
+      <button onclick="switchScreen('ui_2_rag_assistant', this)" class="screen-tab flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold border border-transparent hover:bg-slate-800 text-slate-300 transition-all whitespace-nowrap">
+        <i data-lucide="bot" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>2. Trợ Lý RAG AI</span>
+      </button>
+
+      <button onclick="switchScreen('ui_3_sop_documents', this)" class="screen-tab flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold border border-transparent hover:bg-slate-800 text-slate-300 transition-all whitespace-nowrap">
+        <i data-lucide="book-open" class="w-3.5 h-3.5 text-sky-400"></i>
+        <span>3. Kho SOP & PDF</span>
+      </button>
+
+      <button onclick="switchScreen('ui_4_incident_tickets', this)" class="screen-tab flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold border border-transparent hover:bg-slate-800 text-slate-300 transition-all whitespace-nowrap">
+        <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-400"></i>
+        <span>4. Phiếu Sự Cố</span>
+        <span class="px-1 py-0.2 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[9px] rounded font-mono">3 Mới</span>
+      </button>
+
+      <button onclick="switchScreen('ui_5_kpi_dashboard', this)" class="screen-tab flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold border border-transparent hover:bg-slate-800 text-slate-300 transition-all whitespace-nowrap">
+        <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>5. Dashboard KPI</span>
+      </button>
+
+      <button onclick="switchScreen('ui_6_system_admin', this)" class="screen-tab flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-semibold border border-transparent hover:bg-slate-800 text-slate-300 transition-all whitespace-nowrap">
+        <i data-lucide="sliders" class="w-3.5 h-3.5 text-purple-400"></i>
+        <span>6. Quản Trị Hệ Thống</span>
+      </button>
+    </nav>
+
+    <!-- Right: Persona Selector & Actions -->
+    <div class="flex items-center gap-2">
+      <!-- Persona Dropdown -->
+      <div class="relative">
+        <select id="hub-persona-select" onchange="changePersona(this.value)" class="bg-[#131b2e] border border-slate-700 text-cyan-300 text-xs rounded-lg px-2 py-1 font-mono cursor-pointer focus:outline-none focus:border-cyan-500">
+          <option value="ENG-092">👨‍🔧 Kỹ sư (ENG-092)</option>
+          <option value="ADM-001">👔 Quản lý (ADM-001)</option>
+          <option value="OP-412">👷 Công nhân (OP-412)</option>
+        </select>
+      </div>
+
+      <!-- Guided Walkthrough Button -->
+      <button onclick="openWalkthroughModal()" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-950/60 border border-amber-500/50 hover:bg-amber-900/60 text-amber-300 text-xs font-semibold transition-all">
+        <i data-lucide="play" class="w-3 h-3 fill-amber-400 text-amber-400"></i>
+        <span>Kịch Bản</span>
+      </button>
+
+      <!-- Architecture Cheat Sheet Button -->
+      <button onclick="openArchModal()" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors" title="Kiến trúc hệ thống">
+        <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-400"></i>
+      </button>
+
+      <!-- Toggle Fullscreen / Collapse Header -->
+      <button onclick="toggleCollapseHeader()" id="collapse-header-btn" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors" title="Thu gọn thanh điều khiển để mở rộng khung UI tối đa">
+        <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
+      </button>
+
+      <!-- Open Standalone Tab -->
+      <button onclick="openStandaloneTab()" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors" title="Mở trang hiện tại ra tab riêng">
+        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Floating Expand Button when header collapsed -->
+  <button id="floating-expand-btn" onclick="toggleCollapseHeader()" class="hidden fixed top-2 right-2 z-40 px-2.5 py-1 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-bold shadow-xl flex items-center gap-1.5 transition-all">
+    <i data-lucide="maximize-2" class="w-3 h-3"></i>
+    <span>Hiện Menu Demo</span>
+  </button>
+
+  <!-- ======================================================== -->
+  <!-- GUIDED SCENARIO STEP BAR (Khi chạy kịch bản)             -->
+  <!-- ======================================================== -->
+  <div id="walkthrough-bar" class="hidden bg-gradient-to-r from-amber-950/90 via-slate-900/90 to-sky-950/90 border-b border-amber-500/40 px-4 py-1.5 flex items-center justify-between text-xs transition-all z-20">
+    <div class="flex items-center gap-2.5">
+      <span class="px-1.5 py-0.2 rounded bg-amber-500 text-black font-mono font-bold text-[9px]">WALKTHROUGH</span>
+      <span id="wt-step-title" class="font-bold text-white text-xs">Bước 1/5: Đăng nhập</span>
+      <span class="text-slate-500">|</span>
+      <span id="wt-step-desc" class="text-slate-300 text-xs truncate max-w-xl">Xác thực ca làm việc và chuyển đến giao diện Trợ lý Kỹ thuật RAG AI.</span>
+    </div>
+    <div class="flex items-center gap-1.5 font-mono">
+      <button onclick="prevWalkthroughStep()" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] disabled:opacity-40" id="wt-prev-btn">← Trước</button>
+      <button onclick="nextWalkthroughStep()" class="px-2 py-0.5 rounded bg-amber-500 hover:bg-amber-400 text-black font-bold text-[10px]" id="wt-next-btn">Tiếp theo →</button>
+      <button onclick="closeWalkthroughBar()" class="ml-1 text-slate-400 hover:text-white text-xs">✕</button>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MAIN PREVIEW CANVAS (IFRAME)                            -->
+  <!-- ======================================================== -->
+  <main class="flex-1 w-full h-full relative overflow-hidden bg-[#070d19]">
+    <iframe id="preview-frame" src="./ui_1_login/code.html" class="w-full h-full border-0" title="SmartSOP Screen Preview"></iframe>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: KỊCH BẢN DEMO HỆ THỐNG (GUIDED SCENARIOS)         -->
+  <!-- ======================================================== -->
+  <div id="walkthrough-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl bg-[#0b1326] border border-cyan-500/50 rounded-2xl p-6 shadow-2xl text-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div class="p-2 rounded-lg bg-amber-950 border border-amber-500/40 text-amber-400">
+            <i data-lucide="presentation" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Kịch Bản Trình Diễn Hệ Thống</h3>
+            <p class="text-xs text-slate-400 font-mono">Chọn kịch bản demo mẫu để trải nghiệm quy trình xử lý sự cố toàn trình</p>
+          </div>
+        </div>
+        <button onclick="closeWalkthroughModal()" class="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800">✕</button>
+      </div>
+
+      <div class="mt-5 space-y-4">
+        <!-- Scenario 1 -->
+        <div onclick="startWalkthrough(1)" class="group p-4 rounded-xl bg-[#131b2e] hover:bg-sky-950/60 border border-slate-700 hover:border-cyan-500 cursor-pointer transition-all">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-sm text-cyan-300 group-hover:text-cyan-200 flex items-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
+              Kịch Bản 1: Quy trình Xử lý sự cố máy SMT E-204 bằng RAG AI (End-to-End)
+            </span>
+            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-mono font-bold">KHUYÊN DÙNG DEMO</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Mô phỏng sự cố thực tế: Máy Pick & Place Fuji NXT báo lỗi Feeder E-204 ➔ Kỹ sư chat với Trợ lý AI ➔ RAG truy xuất đoạn SOP chuẩn trang 4 (FAISS 96%) ➔ Nhảy sang xem trực tiếp file PDF gốc ➔ Bấm xác nhận "Đã sửa xong qua AI" đóng ticket ➔ Xem Dashboard KPI ghi nhận thời gian MTTR giảm.
+          </p>
+          <div class="mt-2 flex items-center gap-2 text-[10px] font-mono text-slate-400">
+            <span>5 bước liên hoàn</span> • <span>Thời lượng: ~2 phút</span> • <span>Dữ liệu: Chuẩn IPC Class 3</span>
+          </div>
+        </div>
+
+        <!-- Scenario 2 -->
+        <div onclick="startWalkthrough(2)" class="group p-4 rounded-xl bg-[#131b2e] hover:bg-sky-950/60 border border-slate-700 hover:border-cyan-500 cursor-pointer transition-all">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-sm text-purple-300 group-hover:text-purple-200 flex items-center gap-2">
+              <i data-lucide="bar-chart-3" class="w-4 h-4 text-purple-400"></i>
+              Kịch Bản 2: Quản lý Vận hành, Giám sát SCADA & Quản trị Master Data
+            </span>
+            <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 text-[10px] font-mono">VAI TRÒ QUẢN LÝ</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Đăng nhập vai trò Quản lý ADM-001 ➔ Phân tích biểu đồ MTTR theo tuần và Top 5 lỗi lặp lại nhiều nhất ➔ Tra cứu danh mục máy trạm SCADA ➔ Quản lý phân quyền RBAC và kiểm tra trạng thái Vector Database ChromaDB.
+          </p>
+          <div class="mt-2 flex items-center gap-2 text-[10px] font-mono text-slate-400">
+            <span>3 bước</span> • <span>Phân tích nghiệp vụ nhà máy</span> • <span>Kiến trúc hệ thống</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: TỔNG QUAN KIẾN TRÚC & CHỈ SỐ HIỆU NĂNG            -->
+  <!-- ======================================================== -->
+  <div id="arch-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#0b1326] border border-cyan-500/50 rounded-2xl p-6 shadow-2xl text-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div>
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <i data-lucide="layers" class="w-5 h-5 text-cyan-400"></i>
+            Tổng Quan Kiến Trúc: Hệ Thống SmartSOP AI
+          </h3>
+          <p class="text-xs text-slate-400 font-mono">Hệ thống Quản lý Quy trình Vận hành Tiêu chuẩn (SOP) &amp; Trợ lý Kỹ thuật RAG AI cho Nhà máy Thông minh</p>
+        </div>
+        <button onclick="closeArchModal()" class="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800">✕</button>
+      </div>
+
+      <div class="mt-4 space-y-4 text-xs">
+        <!-- 4 Key Metrics -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono">
+          <div class="p-3 rounded-xl bg-[#131b2e] border border-slate-700">
+            <div class="text-[10px] text-slate-400">THỜI GIAN KHẮC PHỤC MTTR</div>
+            <div class="text-lg font-bold text-cyan-300 mt-1">11.0m <span class="text-xs text-emerald-400 font-normal">(-64%)</span></div>
+            <div class="text-[10px] text-slate-500">Giảm từ 26.4m ban đầu</div>
+          </div>
+          <div class="p-3 rounded-xl bg-[#131b2e] border border-slate-700">
+            <div class="text-[10px] text-slate-400">ĐỘ CHÍNH XÁC RAG</div>
+            <div class="text-lg font-bold text-emerald-400 mt-1">96.8%</div>
+            <div class="text-[10px] text-slate-500">Ground-truth đối chiếu SOP</div>
+          </div>
+          <div class="p-3 rounded-xl bg-[#131b2e] border border-slate-700">
+            <div class="text-[10px] text-slate-400">TỐC ĐỘ TRẢ LỜI TTFT</div>
+            <div class="text-lg font-bold text-sky-300 mt-1">&lt; 0.8s</div>
+            <div class="text-[10px] text-slate-500">Streaming token SSE</div>
+          </div>
+          <div class="p-3 rounded-xl bg-[#131b2e] border border-slate-700">
+            <div class="text-[10px] text-slate-400">KHO VECTOR CHUNKS</div>
+            <div class="text-lg font-bold text-purple-400 mt-1">4,520</div>
+            <div class="text-[10px] text-slate-500">BAAI/bge-m3 1024 dims</div>
+          </div>
+        </div>
+
+        <!-- System Architecture 5-Layer -->
+        <div class="p-4 rounded-xl bg-[#131b2e] border border-slate-700 space-y-2">
+          <div class="font-bold text-sm text-cyan-400 flex items-center gap-1.5">
+            <i data-lucide="network" class="w-4 h-4"></i> Kiến Trúc Công Nghệ 5 Tầng:
+          </div>
+          <ol class="space-y-2 pl-4 list-decimal text-slate-300 leading-relaxed font-mono text-[11px]">
+            <li><strong class="text-white">Edge & IoT Ingestion:</strong> Thu thập trạng thái SCADA máy SMT (Fuji NXT, Heller Reflow, AOI Koh Young) qua MQTT / REST API.</li>
+            <li><strong class="text-white">PDF Processing & Semantic Chunking:</strong> Trích xuất bảng biểu bằng <code>pdfplumber</code>, phân đoạn ngữ nghĩa 512 tokens (overlap 100).</li>
+            <li><strong class="text-white">Multilingual Vector Search:</strong> Mô hình <code>BAAI/bge-m3</code> kết hợp ChromaDB / FAISS HNSW Indexing.</li>
+            <li><strong class="text-white">Anti-Hallucination RAG Engine:</strong> Gemini 1.5 Flash với kỹ thuật Grounding & Citation, bắt buộc trích dẫn rõ số trang và bước thao tác.</li>
+            <li><strong class="text-white">Industrial Web Interface:</strong> Vite + React 18, Tailwind CSS, SSE Streaming Chat, PDF Inline Viewer và SCADA Telemetry.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT: CONTROLLER & WALKTHROUGH RUNNER             -->
+  <!-- ======================================================== -->
+  <script>
+    const SCREEN_PATHS = {
+      'ui_1_login': './ui_1_login/code.html',
+      'ui_2_rag_assistant': './ui_2_rag_assistant/code.html',
+      'ui_3_sop_documents': './ui_3_sop_documents/code.html',
+      'ui_4_incident_tickets': './ui_4_incident_tickets/code.html',
+      'ui_5_kpi_dashboard': './ui_5_kpi_dashboard/code.html',
+      'ui_6_system_admin': './ui_6_system_admin/code.html',
+    };
+
+    let currentScreen = 'ui_1_login';
+    let currentWalkthrough = null;
+    let currentStepIndex = 0;
+
+    const WALKTHROUGHS = {
+      1: {
+        title: 'Quy trình Xử lý sự cố máy SMT E-204 (End-to-End RAG)',
+        steps: [
+          {
+            screen: 'ui_1_login',
+            title: 'Bước 1/5: Đăng nhập với vai trò Kỹ sư ca (ENG-092)',
+            desc: 'Kỹ sư chọn tài khoản Demo "ENG-092" và bấm Đăng nhập để nhận phiên xác thực JWT.'
+          },
+          {
+            screen: 'ui_2_rag_assistant',
+            title: 'Bước 2/5: Máy báo lỗi kẹt Feeder E-204 -> Chat RAG AI',
+            desc: 'Kỹ sư gửi câu hỏi mã lỗi E-204. Trợ lý AI truy xuất vector, trả về chẩn đoán 4 bước và nguồn SOP-SMT-001 (Khớp 96%).'
+          },
+          {
+            screen: 'ui_3_sop_documents',
+            title: 'Bước 3/5: Đối chiếu tài liệu SOP chuẩn tại Kho PDF',
+            desc: 'Hệ thống tự động mở file PDF SOP-SMT-001 tại Trang 4, hiển thị đoạn trích dẫn gốc và các bước kỹ thuật bắt buộc.'
+          },
+          {
+            screen: 'ui_4_incident_tickets',
+            title: 'Bước 4/5: Đóng phiếu sự cố "Đã sửa xong ngay qua AI"',
+            desc: 'Kỹ sư xác nhận hoàn tất thao tác trực tiếp tại hiện trường, hệ thống ghi nhận thời gian khắc phục MTTR 2.5 phút.'
+          },
+          {
+            screen: 'ui_5_kpi_dashboard',
+            title: 'Bước 5/5: Dashboard ghi nhận MTTR toàn xưởng giảm mạnh',
+            desc: 'Biểu đồ MTTR cập nhật giảm từ 26.4m xuống 11.0m (-64% Downtime). Báo cáo phân tích tự động hoàn thành.'
+          }
+        ]
+      },
+      2: {
+        title: 'Quản lý Vận hành & Master Data',
+        steps: [
+          {
+            screen: 'ui_5_kpi_dashboard',
+            title: 'Bước 1/3: Giám sát KPI & Phân tích tỷ lệ lỗi dây chuyền',
+            desc: 'Quản đốc theo dõi tỷ lệ sự cố theo dây chuyền SMT-01 (55%), Reflow (30%), AOI (15%) và Top 5 lỗi phổ biến.'
+          },
+          {
+            screen: 'ui_6_system_admin',
+            title: 'Bước 2/3: Quản trị danh mục Thiết bị SCADA & Tài liệu SOP liên kết',
+            desc: 'Kiểm tra trạng thái kết nối các trạm máy Fuji NXT, Heller, Koh Young và các file SOP Master Data tương ứng.'
+          },
+          {
+            screen: 'ui_6_system_admin',
+            title: 'Bước 3/3: Phân quyền RBAC & Trạng thái Vector Database ChromaDB',
+            desc: 'Xem cây phân quyền 3 cấp (System Admin, Shift Engineer, Operator) và kiểm tra ChromaDB (148 chunks, 100% sẵn sàng).'
+          }
+        ]
+      }
+    };
+
+    function switchScreen(screenKey, btnElement) {
+      currentScreen = screenKey;
+      const frame = document.getElementById('preview-frame');
+      frame.src = SCREEN_PATHS[screenKey];
+
+      // Update active tab styling
+      document.querySelectorAll('.screen-tab').forEach(tab => tab.classList.remove('tab-active'));
+      if (btnElement) {
+        btnElement.classList.add('tab-active');
+      } else {
+        const tabs = document.querySelectorAll('.screen-tab');
+        const keys = Object.keys(SCREEN_PATHS);
+        const idx = keys.indexOf(screenKey);
+        if (tabs[idx]) tabs[idx].classList.add('tab-active');
+      }
+    }
+
+    function changePersona(userId) {
+      localStorage.setItem('smartsop_current_user', userId);
+      const frame = document.getElementById('preview-frame');
+      // Reload current screen to trigger profile update
+      frame.contentWindow.location.reload();
+    }
+
+    function openStandaloneTab() {
+      const url = SCREEN_PATHS[currentScreen];
+      window.open(url, '_blank');
+    }
+
+    // Modal helpers
+    function openWalkthroughModal() {
+      document.getElementById('walkthrough-modal').classList.remove('hidden');
+    }
+    function closeWalkthroughModal() {
+      document.getElementById('walkthrough-modal').classList.add('hidden');
+    }
+
+    function openArchModal() {
+      document.getElementById('arch-modal').classList.remove('hidden');
+    }
+    function closeArchModal() {
+      document.getElementById('arch-modal').classList.add('hidden');
+    }
+
+    // Walkthrough runner
+    function startWalkthrough(id) {
+      closeWalkthroughModal();
+      currentWalkthrough = WALKTHROUGHS[id];
+      currentStepIndex = 0;
+      document.getElementById('walkthrough-bar').classList.remove('hidden');
+      renderWalkthroughStep();
+    }
+
+    function closeWalkthroughBar() {
+      document.getElementById('walkthrough-bar').classList.add('hidden');
+      currentWalkthrough = null;
+    }
+
+    function renderWalkthroughStep() {
+      if (!currentWalkthrough) return;
+      const step = currentWalkthrough.steps[currentStepIndex];
+      document.getElementById('wt-step-title').textContent = step.title;
+      document.getElementById('wt-step-desc').textContent = step.desc;
+
+      switchScreen(step.screen);
+
+      document.getElementById('wt-prev-btn').disabled = currentStepIndex === 0;
+      document.getElementById('wt-next-btn').textContent = (currentStepIndex === currentWalkthrough.steps.length - 1) ? 'Hoàn tất ✓' : 'Tiếp theo →';
+    }
+
+    function nextWalkthroughStep() {
+      if (!currentWalkthrough) return;
+      if (currentStepIndex < currentWalkthrough.steps.length - 1) {
+        currentStepIndex++;
+        renderWalkthroughStep();
+      } else {
+        closeWalkthroughBar();
+      }
+    }
+
+    function prevWalkthroughStep() {
+      if (!currentWalkthrough) return;
+      if (currentStepIndex > 0) {
+        currentStepIndex--;
+        renderWalkthroughStep();
+      }
+    }
+
+    function toggleCollapseHeader() {
+      const header = document.getElementById('hub-main-header');
+      const floatBtn = document.getElementById('floating-expand-btn');
+      if (header.classList.contains('hidden')) {
+        header.classList.remove('hidden');
+        floatBtn.classList.add('hidden');
+      } else {
+        header.classList.add('hidden');
+        floatBtn.classList.remove('hidden');
+      }
+    }
+
+    // Keyboard navigation (1..6)
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      const key = e.key;
+      const screenKeys = Object.keys(SCREEN_PATHS);
+      if (key >= '1' && key <= '6') {
+        const idx = parseInt(key) - 1;
+        switchScreen(screenKeys[idx]);
+      }
+    });
+
+    // Initialize lucide
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
