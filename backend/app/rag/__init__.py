@@ -1,11 +1,12 @@
 """
-RAG Ingestion, Retrieval, Prompting & Citations package for SmartSOP AI:
+RAG Ingestion, Retrieval, Prompting, Citations & Dual-LLM package for SmartSOP AI:
 - embeddings: Lazy Singleton BAAI/bge-m3 wrapper & ChromaEmbeddingFunction
 - vector_store: Singleton ChromaDB PersistentClient service (cosine space)
 - ingestion: Bounded-concurrency background worker syncing PDF chunks to ChromaDB & SQL DB
 - retriever: Dual-retrieval (error-code regex boost + cosine search) with similarity gating
 - prompt_engine: Anti-hallucination hard guardrails system prompt & context formatter
 - citations: Grounded citation verifier & hallucinated-tag stripper
+- llm: Dual-provider LLM abstraction (Gemini API & Ollama local) with async streaming
 """
 
 from app.rag.citations import (
@@ -22,6 +23,13 @@ from app.rag.ingestion import (
     INGESTION_SEMAPHORE,
     delete_sop_vectors,
     ingest_sop_document,
+)
+from app.rag.llm import (
+    BaseLLMProvider,
+    GeminiProvider,
+    OllamaProvider,
+    create_llm_provider,
+    get_llm_provider,
 )
 from app.rag.prompt_engine import (
     REFUSAL_MESSAGE,
@@ -55,4 +63,9 @@ __all__ = [
     "CITATION_PATTERN",
     "extract_verified_citations",
     "strip_unverified_citations",
+    "BaseLLMProvider",
+    "GeminiProvider",
+    "OllamaProvider",
+    "create_llm_provider",
+    "get_llm_provider",
 ]
