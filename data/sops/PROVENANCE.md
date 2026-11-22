@@ -13,7 +13,7 @@ This file documents the origin, structure, and ingestion test characteristics of
 | 3 | `SOP_AOI_003_Automated_Optical_Inspection_Standards.pdf` | `SOP-AOI-003` | 1 | Standardized SOP | Post-reflow 3D AOI criteria (IPC-A-610 Class 3) & escalation protocol |
 | 4 | `SOP_FEEDER_004_Tape_And_Reel_Setup_Guide.pdf` | `SOP-FEEDER-004-VN` | 2 | Standardized SOP | Feeder reel loading, calibration, alarm codes (`E-204`, `E-201`, `E-208`) |
 | 5 | `SOP_PCB_005_Bare_Board_Cleanliness_And_Inspection.pdf` | `SOP-PCB-005-VN` | 1 | Standardized SOP | Bare PCB defect matrix (`PCB-D01`–`PCB-D03`), moisture sensitivity & baking |
-| 6 | `T962A_Infrared_Reflow_Oven_Official_Manual.pdf` | `MANUAL-PUHUI-T962A` | 8 | Manufacturer Manual | Puhui T-962A specifications, 8 thermal waves, safety & maintenance |
+| 6 | `T962A_Infrared_Reflow_Oven_Official_Manual.pdf` | `MANUAL-PUHUI-T962A` | 6 | Manufacturer Manual | Puhui T-962A specifications, 8 thermal waves, safety & maintenance |
 | 7 | `Research_Paper_SMT_Inspection_DVQI_2312.09232.pdf` | `ARXIV-2312-09232` | 8 | Scientific Paper | DVQI inline automated visual inspection architecture (arXiv:2312.09232) |
 
 ---

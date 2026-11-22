@@ -149,3 +149,61 @@ def test_parse_pdf_document_full_metadata():
     assert doc["total_tables"] >= 1
     assert len(doc["pages"]) == 1
     assert doc["pages"][0]["has_tables"] is True
+
+
+def test_reflow_002_page2_continuation_table_inherits_headers():
+    """Bảng nối tiếp ở trang 2 SOP_REFLOW_002 phải kế thừa Header từ trang 1, giữ nguyên dòng Voiding in BGA/QFN."""
+    target_pdf = SOPS_DIR / "SOP_REFLOW_002_Reflow_Soldering_Defects_Remedies.pdf"
+    parsed_doc = parse_pdf_document(target_pdf)
+    chunks = chunk_document(parsed_doc)
+
+    page2_tables = [c for c in chunks if c["is_table"] and c["page_number"] == 2]
+    assert len(page2_tables) == 1
+    tc = page2_tables[0]
+
+    assert tc["table_headers"] == [
+        "Defect Name",
+        "Physical Mechanism & Root Cause",
+        "Corrective Remediation Protocol",
+    ]
+    lines = [line.strip() for line in tc["content"].split("\n") if line.strip()]
+    assert "Defect Name" in lines[0]
+    assert any(
+        "Voiding in BGA/QFN" in row.replace("<br/>", " ") for row in lines[2:]
+    ), "Dòng 'Voiding in BGA/QFN' bị biến thành Header thay vì dữ liệu!"
+    # Trang 2 của SOP_REFLOW_002 chỉ có bảng nối tiếp -> không sinh prose chunk trùng lặp
+    page2_prose = [c for c in chunks if not c["is_table"] and c["page_number"] == 2]
+    assert page2_prose == []
+
+
+def test_no_duplicate_table_text_in_prose_chunks():
+    """Nội dung bảng E-204 chỉ nằm trong table chunk, không bị lặp lại trong các prose chunk."""
+    target_pdf = SOPS_DIR / "SOP_FEEDER_004_Tape_And_Reel_Setup_Guide.pdf"
+    parsed_doc = parse_pdf_document(target_pdf)
+    chunks = chunk_document(parsed_doc)
+
+    prose_chunks = [c for c in chunks if not c["is_table"]]
+    table_chunks = [c for c in chunks if c["is_table"]]
+
+    assert len(table_chunks) == 1
+    assert "E-204" in table_chunks[0]["content"]
+    assert "Run Feeder Feed Test on HMI screen." in table_chunks[0]["content"]
+
+    for pc in prose_chunks:
+        assert "Run Feeder Feed Test on HMI screen." not in pc["content"]
+        assert "Feeder ID Comm" not in pc["content"]
+
+
+def test_section_titles_accurate_for_tables():
+    """section_title của bảng phải phản ánh mục ngay phía trên bảng hoặc kế thừa từ trang trước, không bắt nhầm bước thao tác."""
+    feeder_doc = parse_pdf_document(SOPS_DIR / "SOP_FEEDER_004_Tape_And_Reel_Setup_Guide.pdf")
+    feeder_chunks = chunk_document(feeder_doc)
+    feeder_table = next(c for c in feeder_chunks if c["is_table"])
+    assert "5. Run Feeder Feed Test" not in feeder_table["section_title"]
+    assert "FEEDER TROUBLESHOOTING" in feeder_table["section_title"]
+
+    smt_doc = parse_pdf_document(SOPS_DIR / "SOP_SMT_001_Pick_And_Place_Machine_Troubleshooting.pdf")
+    smt_chunks = chunk_document(smt_doc)
+    smt_page2_table = next(c for c in smt_chunks if c["is_table"] and c["page_number"] == 2)
+    assert "DAILY PREVENTIVE MAINTENANCE" not in smt_page2_table["section_title"]
+    assert "ERROR CODE MATRIX" in smt_page2_table["section_title"]

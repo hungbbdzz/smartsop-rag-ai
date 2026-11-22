@@ -2,6 +2,8 @@ import re
 from typing import Any, Dict, List, Optional
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+_MD_HEADING_RE = re.compile(r"^(?:##|###)\s+(.+)$", re.MULTILINE)
+
 
 class TableAwareChunker:
     """
@@ -9,7 +11,7 @@ class TableAwareChunker:
     1. Bảng biểu ngắn (<= 2000 ký tự): Giữ nguyên vẹn 100% trong 1 chunk duy nhất, không chia cắt.
     2. Bảng biểu dài (> 2000 ký tự): Tách theo từng nhóm dòng, LUÔN LẶP LẠI DÒNG TIÊU ĐỀ CỘT để bảo toàn ngữ nghĩa mã lỗi.
     3. Không bao giờ cắt xẻ ngang lưng một dòng mã lỗi.
-    4. Văn xuôi thông thường: Sử dụng RecursiveCharacterTextSplitter với phân cấp dấu phân cách (##, ###, \n\n, \n).
+    4. Văn xuôi thông thường: Tách bằng RecursiveCharacterTextSplitter từ annotated_prose (đã loại bỏ nội dung bảng để tránh lặp).
     """
 
     def __init__(
@@ -24,7 +26,6 @@ class TableAwareChunker:
         self.max_table_chunk_size = max_table_chunk_size
         self.rows_per_table_chunk = rows_per_table_chunk
 
-        # Text splitter cho văn xuôi với ưu tiên tiêu đề Markdown
         self.prose_splitter = RecursiveCharacterTextSplitter(
             chunk_size=self.chunk_size,
             chunk_overlap=self.chunk_overlap,
@@ -47,7 +48,6 @@ class TableAwareChunker:
         if not table_lines:
             return []
 
-        # Nếu bảng ngắn (<= max_table_chunk_size ký tự) hoặc chỉ có header + 1-2 dòng:
         if len(markdown_table) <= self.max_table_chunk_size or len(table_lines) <= 4:
             return [{
                 "page_number": page_number,
@@ -58,14 +58,17 @@ class TableAwareChunker:
                 "table_headers": raw_headers or [],
             }]
 
-        # Bảng dài: Cần phân chia theo nhóm hàng, lặp lại tiêu đề
-        # Dòng 0: Header, Dòng 1: Separator (| --- | --- |)
         header_line = table_lines[0]
-        separator_line = table_lines[1] if len(table_lines) > 1 and "---" in table_lines[1] else "| " + " | ".join(["---"] * header_line.count("|")) + " |"
-        data_rows = table_lines[2:] if "---" in table_lines[1] else table_lines[1:]
+        has_separator = len(table_lines) > 1 and "---" in table_lines[1]
+        num_cols = max(header_line.count("|") - 1, 1)
+        separator_line = (
+            table_lines[1]
+            if has_separator
+            else "| " + " | ".join(["---"] * num_cols) + " |"
+        )
+        data_rows = table_lines[2:] if has_separator else table_lines[1:]
 
         chunks = []
-        # Chia data_rows thành các nhóm nhỏ
         for i in range(0, len(data_rows), self.rows_per_table_chunk):
             row_group = data_rows[i : i + self.rows_per_table_chunk]
             chunk_lines = [header_line, separator_line] + row_group
@@ -85,7 +88,8 @@ class TableAwareChunker:
     def chunk_parsed_document(self, parsed_doc: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
         Phân đoạn toàn bộ tài liệu đã được bóc tách từ pdf_parser.
-        Kết hợp thông minh giữa các chunk văn bản thông thường và các chunk bảng biểu.
+        Tách riêng văn xuôi (`annotated_prose`) và bảng biểu (`tables`) để không lặp dữ liệu
+        và giữ chính xác `section_title` theo tiêu đề Markdown.
         """
         all_chunks: List[Dict[str, Any]] = []
         global_chunk_idx = 0
@@ -93,32 +97,27 @@ class TableAwareChunker:
 
         for page in parsed_doc.get("pages", []):
             page_num = page["page_number"]
-            raw_text = page.get("raw_text", "")
+            prose_source = page.get("annotated_prose") if "annotated_prose" in page else page.get("raw_text", "")
             page_tables = page.get("tables", [])
             page_headings = page.get("headings", [])
 
-            # Cập nhật section title nếu trang có tiêu đề mới
-            if page_headings:
-                current_section = page_headings[0]
-
-            # 1. Xử lý văn bản xuôi trên trang
-            # Tách các đoạn văn xuôi
-            if raw_text:
-                prose_subtexts = self.prose_splitter.split_text(raw_text)
+            # 1. Xử lý văn xuôi đã tách khỏi vùng bảng (tận dụng separator \n## , \n### )
+            if prose_source:
+                prose_subtexts = self.prose_splitter.split_text(prose_source)
                 for subtext in prose_subtexts:
                     clean_subtext = subtext.strip()
                     if not clean_subtext:
                         continue
 
-                    # Dò xem subtext này có bắt đầu bằng tiêu đề mới không
-                    heading_match = re.search(r"^(## |### )?(\d+\.\s+[^\n]+)", clean_subtext)
-                    if heading_match:
-                        current_section = heading_match.group(2).strip()
+                    md_headings = _MD_HEADING_RE.findall(clean_subtext)
+                    chunk_section = md_headings[0].strip() if md_headings else current_section
+                    if md_headings:
+                        current_section = md_headings[-1].strip()
 
                     all_chunks.append({
                         "chunk_index": global_chunk_idx,
                         "page_number": page_num,
-                        "section_title": current_section,
+                        "section_title": chunk_section,
                         "content": clean_subtext,
                         "char_count": len(clean_subtext),
                         "is_table": False,
@@ -130,7 +129,8 @@ class TableAwareChunker:
             for t_info in page_tables:
                 md_table = t_info.get("markdown", "")
                 raw_headers = t_info.get("headers", [])
-                table_title = f"{current_section} - Bảng tra cứu"
+                table_section = t_info.get("section_title") or current_section
+                table_title = f"{table_section} - Bảng tra cứu"
 
                 table_chunks = self.split_table_to_chunks(
                     markdown_table=md_table,
@@ -143,6 +143,9 @@ class TableAwareChunker:
                     t_chunk["chunk_index"] = global_chunk_idx
                     all_chunks.append(t_chunk)
                     global_chunk_idx += 1
+
+            if page_headings:
+                current_section = page_headings[-1]
 
         return all_chunks
 
@@ -157,4 +160,3 @@ def chunk_document(
     """
     chunker = TableAwareChunker(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
     return chunker.chunk_parsed_document(parsed_doc)
-
