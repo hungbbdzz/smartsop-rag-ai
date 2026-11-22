@@ -4,6 +4,7 @@ from app.routers.machines import router as machines_router
 from app.routers.users import router as users_router
 from app.routers.incident_tickets import router as incident_tickets_router
 from app.routers.sop_documents import router as sop_documents_router
+from app.routers.chat import router as chat_router
 
 __all__ = [
     "auth_router",
@@ -12,4 +13,5 @@ __all__ = [
     "users_router",
     "incident_tickets_router",
     "sop_documents_router",
+    "chat_router",
 ]

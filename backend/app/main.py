@@ -10,6 +10,7 @@ from app.routers.machines import router as machines_router
 from app.routers.users import router as users_router
 from app.routers.incident_tickets import router as incident_tickets_router
 from app.routers.sop_documents import router as sop_documents_router
+from app.routers.chat import router as chat_router
 
 # Cấu hình logging
 logging.basicConfig(
@@ -90,4 +91,5 @@ app.include_router(machines_router, prefix=settings.API_V1_STR)
 app.include_router(users_router, prefix=settings.API_V1_STR)
 app.include_router(incident_tickets_router, prefix=settings.API_V1_STR)
 app.include_router(sop_documents_router, prefix=settings.API_V1_STR)
+app.include_router(chat_router, prefix=settings.API_V1_STR)
 
